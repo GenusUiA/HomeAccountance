@@ -1,7 +1,13 @@
-﻿using Course_project_HOME_ACCOUNTANCE.Expenses_functions;
+﻿using Course_project_HOME_ACCOUNTANCE.classes;
+using Course_project_HOME_ACCOUNTANCE.Expenses_functions;
+using Npgsql;
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Course_project_HOME_ACCOUNTANCE
 {
@@ -15,7 +21,9 @@ namespace Course_project_HOME_ACCOUNTANCE
             InitializeComponent();
             CreateMenuPanel();
             SetupPictureBoxClick();
+            LoadChartData();
         }
+
 
         private void CreateMenuPanel()               //создание кнопок и панельки меню
         {
@@ -66,6 +74,11 @@ namespace Course_project_HOME_ACCOUNTANCE
                         this.Hide();
                         Expenses expenses = new Expenses();
                         expenses.Show();
+                        break;
+                    case "Incomes":
+                        this.Hide();
+                        Incomes incomes = new Incomes();
+                        incomes.Show();
                         break;
                 }
             }
@@ -137,6 +150,99 @@ namespace Course_project_HOME_ACCOUNTANCE
         private void Closer_MouseClick(object sender, MouseEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void LoadChartData()
+        {
+            try
+            {
+                Database database = new Database();
+                database.OpenConnection();
+                string query = @"SELECT category, sum FROM ""Transactions"" WHERE id = @id";
+                NpgsqlCommand cmd = new NpgsqlCommand(query, database.ConnectionString());
+                cmd.Parameters.AddWithValue("@id", Session.Id);
+                using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                {
+                    var categorySums = new Dictionary<string, double>();
+                    var colorMap = new Dictionary<string, Color>
+            {
+                { "Финансы", Color.Red },
+                { "Жилье и коммунальные услуги", Color.Green },
+                { "Ежедневные расходы", Color.Blue },
+                { "Транспорт", Color.Orange },
+                { "Здоровье и спорт", Color.Purple },
+                { "Образование и развлечения", Color.Brown },
+                { "Одежда и подарки", Color.Gray },
+                { "Платежи", Color.Pink }
+            };
+
+                    while (reader.Read())
+                    {
+                        string category = reader["category"].ToString();
+                        double amount = Convert.ToDouble(reader["sum"]);
+                        string group = MapCategoryToGroup(category);
+                        if (categorySums.ContainsKey(group))
+                            categorySums[group] += amount;
+                        else
+                            categorySums[group] = amount;
+                    }
+                    reader.Close();
+
+                    chartPie.Series["Series2"].Points.Clear();
+                    foreach (var entry in categorySums)
+                    {
+                        if (entry.Value > 0)
+                        {
+                            chartPie.Series["Series2"].Points.AddXY(entry.Key, entry.Value);
+                            chartPie.Series["Series2"].Points.Last().Color = colorMap[entry.Key];
+                            chartPie.Series["Series2"].Points.Last().LegendText = $"{entry.Key} ({entry.Value})";
+                        }
+                    }
+                }
+                database.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading chart data: {ex.Message}");
+            }
+        }
+
+        public string MapCategoryToGroup(string category)
+        {
+            switch (category)
+            {
+                case "Инвестиции":
+                case "Кредиты":
+                    return "Финансы";
+                case "Жилье":
+                case "Коммунальные услуги":
+                    return "Жилье и коммунальные услуги";
+                case "Питание":
+                case "Бытовая техника":
+                case "Прочие":
+                    return "Ежедневные расходы";
+                case "Транспорт":
+                    return "Транспорт";
+                case "Здоровье":
+                case "Спорт":
+                    return "Здоровье и спорт";
+                case "Образование":
+                case "Развлечения":
+                case "Отдых":
+                    return "Образование и развлечения";
+                case "Одежда":
+                case "Подарки":
+                    return "Одежда и подарки";
+                case "Платежи":
+                    return "Платежи";
+                default:
+                    return "Неизвестная категория";
+            }
+        }
+
+        public string MapCategoryToGroup(int index)
+        {
+            return new[] { "Финансы", "Жилье и коммунальные услуги", "Ежедневные расходы", "Транспорт", "Здоровье и спорт", "Образование и развлечения", "Одежда и подарки", "Платежи" }[index];
         }
     }
 }

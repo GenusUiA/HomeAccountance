@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Course_project_HOME_ACCOUNTANCE.Expenses_functions;
+using System;
 using System.Windows.Forms;
 
 namespace Course_project_HOME_ACCOUNTANCE

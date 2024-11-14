@@ -90,6 +90,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -110,18 +111,16 @@
     <Compile Include="Autorization.Designer.cs">
       <DependentUpon>Autorization.cs</DependentUpon>
     </Compile>
-    <Compile Include="Database.cs" />
-    <Compile Include="Expenses_functions\Expenses.cs">
+    <Compile Include="classes\Database.cs" />
+    <Compile Include="classes\Goal.cs" />
+    <Compile Include="classes\Income.cs" />
+    <Compile Include="classes\Transaction.cs" />
+    <Compile Include="classes\user.cs" />
+    <Compile Include="Expenses_form\Expenses.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Expenses_functions\Expenses.Designer.cs">
+    <Compile Include="Expenses_form\Expenses.Designer.cs">
       <DependentUpon>Expenses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Expenses_functions\TransactionsRemoving.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Expenses_functions\TransactionsRemoving.Designer.cs">
-      <DependentUpon>TransactionsRemoving.cs</DependentUpon>
     </Compile>
     <Compile Include="Goals.cs">
       <SubType>Form</SubType>
@@ -129,11 +128,17 @@
     <Compile Include="Goals.Designer.cs">
       <DependentUpon>Goals.cs</DependentUpon>
     </Compile>
-    <Compile Include="Incomes.cs">
+    <Compile Include="Incomes_form\Incomes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Incomes.Designer.cs">
+    <Compile Include="Incomes_form\Incomes.Designer.cs">
       <DependentUpon>Incomes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Incomes_form\IncomesAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Incomes_form\IncomesAdd.Designer.cs">
+      <DependentUpon>IncomesAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -156,26 +161,29 @@
     <Compile Include="Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Expenses_functions\TransactionsAdd.cs">
+    <Compile Include="Expenses_form\TransactionsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Expenses_functions\TransactionsAdd.Designer.cs">
+    <Compile Include="Expenses_form\TransactionsAdd.Designer.cs">
       <DependentUpon>TransactionsAdd.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Autorization.resx">
       <DependentUpon>Autorization.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Expenses_functions\Expenses.resx">
+    <EmbeddedResource Include="Expenses_form\Expenses.resx">
       <DependentUpon>Expenses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Expenses_functions\TransactionsAdd.resx">
+    <EmbeddedResource Include="Expenses_form\TransactionsAdd.resx">
       <DependentUpon>TransactionsAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Goals.resx">
       <DependentUpon>Goals.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Incomes.resx">
+    <EmbeddedResource Include="Incomes_form\Incomes.resx">
       <DependentUpon>Incomes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Incomes_form\IncomesAdd.resx">
+      <DependentUpon>IncomesAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -209,12 +217,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2530815_general_key_key lock_lock_office_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Gradient.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Goals_form\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +242,7 @@
     <None Include="Resources\ffaeed41d7b0d4c357025efaf363b7d7.png" />
     <None Include="Resources\png-transparent-computer-icons-navigation-bar-home-home-angle-building-text.png" />
     <None Include="Resources\vecteezy_home-icon-isolated-on-transparent-background-black-symbol_14391893.png" />
+    <None Include="Resources\Undo-Transparent-Background.png" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
   </ItemGroup>

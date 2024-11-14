@@ -1,5 +1,7 @@
-﻿using Npgsql;
+﻿using Course_project_HOME_ACCOUNTANCE.classes;
+using Npgsql;
 using System;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,7 +11,7 @@ namespace Course_project_HOME_ACCOUNTANCE
 {
     public partial class Autorization : Form
     {
-        public string id;
+        public int id;
         public Autorization()
         {
             InitializeComponent();
@@ -41,9 +43,8 @@ namespace Course_project_HOME_ACCOUNTANCE
                         {
                             if (reader.Read())
                             {
-                                id = reader["id"].ToString();
-                                MessageBox.Show("Авторизация успешна");
-                                Goals goals = new Goals(id);
+                                id = int.Parse(reader["id"].ToString());
+                                Session.Id = id;
                                 this.Hide();
                                 MainWindow mainWindow = new MainWindow();
                                 mainWindow.ShowDialog();

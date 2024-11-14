@@ -83,16 +83,6 @@ namespace Course_project_HOME_ACCOUNTANCE.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _2530815_general_key_key_lock_lock_office_icon {
-            get {
-                object obj = ResourceManager.GetObject("2530815_general_key_key lock_lock_office_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ffaeed41d7b0d4c357025efaf363b7d7 {
             get {
                 object obj = ResourceManager.GetObject("ffaeed41d7b0d4c357025efaf363b7d7", resourceCulture);
@@ -156,6 +146,16 @@ namespace Course_project_HOME_ACCOUNTANCE.Properties {
         internal static System.Drawing.Bitmap Simpleicons_Interface_lock_padlock_symbol_for_protect1 {
             get {
                 object obj = ResourceManager.GetObject("Simpleicons_Interface_lock-padlock-symbol-for-protect1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Undo_Transparent_Background {
+            get {
+                object obj = ResourceManager.GetObject("Undo-Transparent-Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
