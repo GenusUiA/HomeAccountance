@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\MSTest.TestAdapter.3.6.3\build\net462\MSTest.TestAdapter.props" Condition="Exists('packages\MSTest.TestAdapter.3.6.3\build\net462\MSTest.TestAdapter.props')" />
+  <Import Project="packages\Microsoft.Testing.Extensions.Telemetry.1.4.3\build\netstandard2.0\Microsoft.Testing.Extensions.Telemetry.props" Condition="Exists('packages\Microsoft.Testing.Extensions.Telemetry.1.4.3\build\netstandard2.0\Microsoft.Testing.Extensions.Telemetry.props')" />
+  <Import Project="packages\Microsoft.Testing.Platform.MSBuild.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.MSBuild.props" Condition="Exists('packages\Microsoft.Testing.Platform.MSBuild.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.MSBuild.props')" />
+  <Import Project="packages\Microsoft.Testing.Platform.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.props" Condition="Exists('packages\Microsoft.Testing.Platform.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +16,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,8 +43,53 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=3.1.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.3.1.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.Framework.3.1.1\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.barcodes, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.bouncy-castle-connector, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.bouncy-castle-connector.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.commons, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.commons.9.0.0\lib\net461\itext.commons.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfua, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.pdfua.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.9.0.0\lib\net461\itext.svg.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.22.0.997, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.2.22.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -45,11 +97,60 @@
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Testing.Extensions.Telemetry, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Testing.Extensions.Telemetry.1.4.3\lib\netstandard2.0\Microsoft.Testing.Extensions.Telemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Testing.Extensions.TrxReport.Abstractions, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Testing.Extensions.TrxReport.Abstractions.1.4.3\lib\netstandard2.0\Microsoft.Testing.Extensions.TrxReport.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Testing.Extensions.VSTestBridge, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Testing.Extensions.VSTestBridge.1.4.3\lib\netstandard2.0\Microsoft.Testing.Extensions.VSTestBridge.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Testing.Platform, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Testing.Platform.1.4.3\lib\netstandard2.0\Microsoft.Testing.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Testing.Platform.MSBuild, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Testing.Platform.MSBuild.1.4.3\lib\netstandard2.0\Microsoft.Testing.Platform.MSBuild.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TestPlatform.CoreUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.TestPlatform.ObjectModel.17.11.1\lib\net462\Microsoft.TestPlatform.CoreUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TestPlatform.PlatformAbstractions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.TestPlatform.ObjectModel.17.11.1\lib\net462\Microsoft.TestPlatform.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.TestPlatform.ObjectModel.17.11.1\lib\net462\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\MSTest.TestFramework.3.6.3\lib\net462\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\MSTest.TestFramework.3.6.3\lib\net462\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql, Version=8.0.4.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>packages\Npgsql.8.0.4\lib\netstandard2.0\Npgsql.dll</HintPath>
@@ -61,6 +162,7 @@
     <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Collections.Immutable.8.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -72,9 +174,14 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.Metadata.1.6.0\lib\netstandard2.0\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -100,15 +207,22 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
     <Reference Include="ZedGraph, Version=5.1.7.430, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
       <HintPath>packages\ZedGraph.5.1.7\lib\net35-Client\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Autorization.cs">
+    <Compile Include="Settings\SettingsUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Autorization.Designer.cs">
+    <Compile Include="Settings\SettingsUser.Designer.cs">
+      <DependentUpon>SettingsUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserEnter\Autorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserEnter\Autorization.Designer.cs">
       <DependentUpon>Autorization.cs</DependentUpon>
     </Compile>
     <Compile Include="classes\Database.cs" />
@@ -122,11 +236,11 @@
     <Compile Include="Expenses_form\Expenses.Designer.cs">
       <DependentUpon>Expenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Goals.cs">
+    <Compile Include="Goals_form\GoalsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Goals.Designer.cs">
-      <DependentUpon>Goals.cs</DependentUpon>
+    <Compile Include="Goals_form\GoalsAdd.Designer.cs">
+      <DependentUpon>GoalsAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Incomes_form\Incomes.cs">
       <SubType>Form</SubType>
@@ -140,34 +254,37 @@
     <Compile Include="Incomes_form\IncomesAdd.Designer.cs">
       <DependentUpon>IncomesAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="UserEnter\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="UserEnter\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="MainWindow\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="MainWindow\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Person.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MainWindow\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports.Designer.cs">
-      <DependentUpon>Reports.cs</DependentUpon>
-    </Compile>
     <Compile Include="Expenses_form\TransactionsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Expenses_form\TransactionsAdd.Designer.cs">
       <DependentUpon>TransactionsAdd.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Autorization.resx">
+    <Compile Include="Reports_creating\Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports_creating\Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Settings\SettingsUser.resx">
+      <DependentUpon>SettingsUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserEnter\Autorization.resx">
       <DependentUpon>Autorization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expenses_form\Expenses.resx">
@@ -176,8 +293,8 @@
     <EmbeddedResource Include="Expenses_form\TransactionsAdd.resx">
       <DependentUpon>TransactionsAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Goals.resx">
-      <DependentUpon>Goals.cs</DependentUpon>
+    <EmbeddedResource Include="Goals_form\GoalsAdd.resx">
+      <DependentUpon>GoalsAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Incomes_form\Incomes.resx">
       <DependentUpon>Incomes.cs</DependentUpon>
@@ -185,10 +302,10 @@
     <EmbeddedResource Include="Incomes_form\IncomesAdd.resx">
       <DependentUpon>IncomesAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="UserEnter\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="MainWindow\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -201,6 +318,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports_creating\Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include=".editorconfig" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -220,7 +340,6 @@
     <None Include="Resources\Gradient.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Goals_form\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
@@ -247,4 +366,17 @@
     <Content Include="Scripts\chart.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.Testing.Platform.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Testing.Platform.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Testing.Platform.MSBuild.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Testing.Platform.MSBuild.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.MSBuild.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Testing.Platform.MSBuild.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Testing.Platform.MSBuild.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.MSBuild.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.Testing.Extensions.Telemetry.1.4.3\build\netstandard2.0\Microsoft.Testing.Extensions.Telemetry.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Testing.Extensions.Telemetry.1.4.3\build\netstandard2.0\Microsoft.Testing.Extensions.Telemetry.props'))" />
+    <Error Condition="!Exists('packages\MSTest.TestAdapter.3.6.3\build\net462\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSTest.TestAdapter.3.6.3\build\net462\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('packages\MSTest.TestAdapter.3.6.3\build\net462\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSTest.TestAdapter.3.6.3\build\net462\MSTest.TestAdapter.targets'))" />
+  </Target>
+  <Import Project="packages\Microsoft.Testing.Platform.MSBuild.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.MSBuild.targets" Condition="Exists('packages\Microsoft.Testing.Platform.MSBuild.1.4.3\build\netstandard2.0\Microsoft.Testing.Platform.MSBuild.targets')" />
+  <Import Project="packages\MSTest.TestAdapter.3.6.3\build\net462\MSTest.TestAdapter.targets" Condition="Exists('packages\MSTest.TestAdapter.3.6.3\build\net462\MSTest.TestAdapter.targets')" />
 </Project>

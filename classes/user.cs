@@ -14,8 +14,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
     internal class user
     {
         public int id;
-        string login;
-        string password;
-        int budget;
+        public string login;
+        public string password;
     }
 }

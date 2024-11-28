@@ -2,6 +2,7 @@
 using Course_project_HOME_ACCOUNTANCE.Incomes_form;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Course_project_HOME_ACCOUNTANCE
@@ -31,7 +32,7 @@ namespace Course_project_HOME_ACCOUNTANCE
         }
 
         private void Incomes_Load(object sender, System.EventArgs e)
-        {
+        { 
             Income income = new Income();
             List<Income> incomes = income.GetUserIncome();
             Inc.DataSource = incomes;
@@ -68,6 +69,21 @@ namespace Course_project_HOME_ACCOUNTANCE
             {
                 MessageBox.Show("Пожалуйста, выберите доход для удаления.");
             }
+        }
+
+        private void Closer_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Closer_MouseEnter(object sender, EventArgs e)
+        {
+            Closer.ForeColor = Color.Red;
+        }
+
+        private void Closer_MouseLeave(object sender, EventArgs e)
+        {
+            Closer.ForeColor = Color.Black;
         }
     }
 }

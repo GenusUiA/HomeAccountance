@@ -38,6 +38,7 @@
             this.Closer = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sorting_form = new System.Windows.Forms.ComboBox();
+            this.LoadTr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Transactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label1.Location = new System.Drawing.Point(345, 25);
+            this.label1.Location = new System.Drawing.Point(362, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(167, 39);
             this.label1.TabIndex = 2;
@@ -74,6 +75,7 @@
             this.Sorting.TabIndex = 4;
             this.Sorting.Text = "Sorting for";
             this.Sorting.UseVisualStyleBackColor = false;
+            this.Sorting.Click += new System.EventHandler(this.Sorting_Click);
             // 
             // Remove
             // 
@@ -92,19 +94,19 @@
             this.Transactions.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.Transactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Transactions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.Transactions.Location = new System.Drawing.Point(87, 153);
+            this.Transactions.Location = new System.Drawing.Point(127, 163);
             this.Transactions.Name = "Transactions";
             this.Transactions.RowHeadersWidth = 51;
             this.Transactions.RowTemplate.Height = 24;
             this.Transactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Transactions.Size = new System.Drawing.Size(702, 248);
+            this.Transactions.Size = new System.Drawing.Size(617, 248);
             this.Transactions.TabIndex = 6;
             // 
             // Search
             // 
-            this.Search.BackColor = System.Drawing.Color.White;
+            this.Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Search.Location = new System.Drawing.Point(535, 97);
+            this.Search.Location = new System.Drawing.Point(541, 97);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(85, 29);
             this.Search.TabIndex = 7;
@@ -115,7 +117,7 @@
             // Searcher
             // 
             this.Searcher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Searcher.Location = new System.Drawing.Point(352, 97);
+            this.Searcher.Location = new System.Drawing.Point(396, 97);
             this.Searcher.Multiline = true;
             this.Searcher.Name = "Searcher";
             this.Searcher.Size = new System.Drawing.Size(148, 29);
@@ -131,8 +133,8 @@
             this.Closer.TabIndex = 13;
             this.Closer.Text = "X";
             this.Closer.Click += new System.EventHandler(this.Closer_Click);
-            this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
-            this.Closer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Closer_MouseMove);
+            this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter_1);
+            this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave);
             // 
             // pictureBox1
             // 
@@ -154,12 +156,26 @@
             this.sorting_form.Size = new System.Drawing.Size(121, 24);
             this.sorting_form.TabIndex = 15;
             // 
+            // LoadTr
+            // 
+            this.LoadTr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
+            this.LoadTr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.LoadTr.Location = new System.Drawing.Point(181, 93);
+            this.LoadTr.Name = "LoadTr";
+            this.LoadTr.Size = new System.Drawing.Size(176, 33);
+            this.LoadTr.TabIndex = 16;
+            this.LoadTr.Text = "Load transactions";
+            this.LoadTr.UseVisualStyleBackColor = false;
+            this.LoadTr.Click += new System.EventHandler(this.LoadTr_Click);
+            // 
             // Expenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(874, 516);
+            this.ControlBox = false;
+            this.Controls.Add(this.LoadTr);
             this.Controls.Add(this.sorting_form);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Closer);
@@ -192,5 +208,6 @@
         private System.Windows.Forms.Label Closer;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox sorting_form;
+        private System.Windows.Forms.Button LoadTr;
     }
 }

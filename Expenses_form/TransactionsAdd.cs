@@ -2,6 +2,7 @@
 using Course_project_HOME_ACCOUNTANCE.Expenses_functions;
 using Npgsql;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using ZedGraph;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -57,7 +58,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             }
         }
 
-        void SaveToDatabase(DateTime date, string sum, string category, string place, int id)
+        private void SaveToDatabase(DateTime date, string sum, string category, string place, int id)
         {
             string query = "INSERT INTO \"Transactions\" (date, sum, category, place, id) VALUES (@date, @sum, @category, @place, @id)";
             Database database = new Database();
@@ -101,6 +102,21 @@ namespace Course_project_HOME_ACCOUNTANCE
             this.Hide();
             Expenses expenses = new Expenses();
             expenses.Show();
+        }
+
+        private void Closer_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Closer_MouseLeave(object sender, EventArgs e)
+        {
+            Closer.ForeColor = Color.Black;
+        }
+
+        private void Closer_MouseEnter(object sender, EventArgs e)
+        {
+            Closer.ForeColor = Color.Red;
         }
     }
 }

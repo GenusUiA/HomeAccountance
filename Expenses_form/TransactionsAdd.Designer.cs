@@ -38,6 +38,7 @@
             this.placeform = new System.Windows.Forms.TextBox();
             this.categoryform = new System.Windows.Forms.ComboBox();
             this.Expenses = new System.Windows.Forms.LinkLabel();
+            this.Closer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -107,7 +108,7 @@
             this.dateform.AllowDrop = true;
             this.dateform.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateform.Location = new System.Drawing.Point(33, 128);
-            this.dateform.MaxDate = new System.DateTime(2024, 11, 7, 10, 30, 20, 0);
+            this.dateform.MaxDate = new System.DateTime(2024, 11, 22, 0, 0, 0, 0);
             this.dateform.Name = "dateform";
             this.dateform.Size = new System.Drawing.Size(134, 22);
             this.dateform.TabIndex = 10;
@@ -138,7 +139,7 @@
             this.Expenses.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.Expenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.Expenses.LinkColor = System.Drawing.Color.Black;
-            this.Expenses.Location = new System.Drawing.Point(301, 22);
+            this.Expenses.Location = new System.Drawing.Point(311, 23);
             this.Expenses.Name = "Expenses";
             this.Expenses.Size = new System.Drawing.Size(143, 33);
             this.Expenses.TabIndex = 13;
@@ -147,13 +148,28 @@
             this.Expenses.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Expenses.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Expenses_LinkClicked);
             // 
+            // Closer
+            // 
+            this.Closer.AutoSize = true;
+            this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
+            this.Closer.Location = new System.Drawing.Point(739, 9);
+            this.Closer.Name = "Closer";
+            this.Closer.Size = new System.Drawing.Size(28, 30);
+            this.Closer.TabIndex = 14;
+            this.Closer.Text = "X";
+            this.Closer.Click += new System.EventHandler(this.Closer_Click);
+            this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
+            this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave);
+            // 
             // TransactionsAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(798, 260);
+            this.ClientSize = new System.Drawing.Size(776, 260);
+            this.ControlBox = false;
+            this.Controls.Add(this.Closer);
             this.Controls.Add(this.Expenses);
             this.Controls.Add(this.categoryform);
             this.Controls.Add(this.placeform);
@@ -183,5 +199,6 @@
         private System.Windows.Forms.TextBox placeform;
         private System.Windows.Forms.ComboBox categoryform;
         private System.Windows.Forms.LinkLabel Expenses;
+        private System.Windows.Forms.Label Closer;
     }
 }

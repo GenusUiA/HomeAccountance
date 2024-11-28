@@ -8,8 +8,9 @@ using System.Windows.Forms;
 
 namespace Course_project_HOME_ACCOUNTANCE.classes
 {
-    internal class Transaction
+    public class Transaction
     {
+        public int trans_id { get; set; }
         public DateTime date { get; set; }
         public string sum { get; set; }
         public string category { get; set; }
@@ -21,7 +22,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
             Database db = new Database();
             db.OpenConnection();
             int id = Session.Id;
-            NpgsqlCommand command = new NpgsqlCommand("SELECT date, sum, category, place FROM \"Transactions\" WHERE id = @id", db.ConnectionString());
+            NpgsqlCommand command = new NpgsqlCommand("SELECT trans_id, date, sum, category, place FROM \"Transactions\" WHERE id = @id", db.ConnectionString());
             command.Parameters.AddWithValue("@id", id);
             using (NpgsqlDataReader reader = command.ExecuteReader())
             {
@@ -29,10 +30,11 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
                 {
                     Transaction trans = new Transaction
                     {
-                        date = reader.GetDateTime(0),
-                        sum = reader.GetString(1),
-                        category = reader.GetString(2),
-                        place = reader.GetString(3),
+                        trans_id = reader.GetInt32(0),
+                        date = reader.GetDateTime(1),
+                        sum = reader.GetString(2),
+                        category = reader.GetString(3),
+                        place = reader.GetString(4),
                     };
                     returnThese.Add(trans);
                 }
@@ -92,6 +94,38 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
             {
                 db.CloseConnection();
             }
+        }
+
+        public List<Transaction> GetUserTransByDateRange(DateTime startDate, DateTime endDate)
+        {
+            List<Transaction> returnThese = new List<Transaction>();
+            Database db = new Database();
+            db.OpenConnection();
+            int id = Session.Id;
+            NpgsqlCommand command = new NpgsqlCommand(
+                "SELECT date, sum, category, place FROM \"Transactions\" " +
+                "WHERE id = @id AND date BETWEEN @startDate AND @endDate",
+                db.ConnectionString()
+            );
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@startDate", startDate);
+            command.Parameters.AddWithValue("@endDate", endDate);
+            using (NpgsqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Transaction trans = new Transaction
+                    {
+                        date = reader.GetDateTime(0),
+                        sum = reader.GetString(1),
+                        category = reader.GetString(2),
+                        place = reader.GetString(3),
+                    };
+                    returnThese.Add(trans);
+                }
+                db.CloseConnection();
+            }
+            return returnThese;
         }
     }
 }

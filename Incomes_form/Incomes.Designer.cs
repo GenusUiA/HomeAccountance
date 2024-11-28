@@ -70,6 +70,9 @@
             this.Closer.Size = new System.Drawing.Size(28, 30);
             this.Closer.TabIndex = 23;
             this.Closer.Text = "X";
+            this.Closer.Click += new System.EventHandler(this.Closer_Click);
+            this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
+            this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave);
             // 
             // Searcher
             // 
@@ -97,12 +100,12 @@
             this.Inc.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.Inc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Inc.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.Inc.Location = new System.Drawing.Point(106, 152);
+            this.Inc.Location = new System.Drawing.Point(238, 163);
             this.Inc.Name = "Inc";
             this.Inc.RowHeadersWidth = 51;
             this.Inc.RowTemplate.Height = 24;
             this.Inc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Inc.Size = new System.Drawing.Size(702, 248);
+            this.Inc.Size = new System.Drawing.Size(420, 248);
             this.Inc.TabIndex = 20;
             // 
             // removeincome
@@ -157,6 +160,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(895, 519);
+            this.ControlBox = false;
             this.Controls.Add(this.sorting_form);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Closer);

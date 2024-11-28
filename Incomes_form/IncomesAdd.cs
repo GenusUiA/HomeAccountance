@@ -60,5 +60,20 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
             string category = categoryform.Text;
             SaveToDatabase(sum, category, Session.Id);
         }
+
+        private void Closer_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Closer_MouseEnter(object sender, EventArgs e)
+        {
+            Closer.ForeColor = Color.Red;
+        }
+
+        private void Closer_MouseLeave(object sender, EventArgs e)
+        {
+            Closer.ForeColor = Color.Black;
+        }
     }
 }

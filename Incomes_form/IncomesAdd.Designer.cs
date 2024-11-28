@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.Incomes = new System.Windows.Forms.LinkLabel();
-            this.categoryform = new System.Windows.Forms.ComboBox();
             this.sumform = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.AddIncome = new System.Windows.Forms.Button();
+            this.categoryform = new System.Windows.Forms.TextBox();
+            this.Closer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Incomes
@@ -51,14 +52,6 @@
             this.Incomes.Text = "Incomes";
             this.Incomes.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Incomes.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Incomes_LinkClicked);
-            // 
-            // categoryform
-            // 
-            this.categoryform.FormattingEnabled = true;
-            this.categoryform.Location = new System.Drawing.Point(272, 133);
-            this.categoryform.Name = "categoryform";
-            this.categoryform.Size = new System.Drawing.Size(146, 24);
-            this.categoryform.TabIndex = 22;
             // 
             // sumform
             // 
@@ -102,14 +95,38 @@
             this.AddIncome.UseVisualStyleBackColor = false;
             this.AddIncome.Click += new System.EventHandler(this.AddIncome_Click);
             // 
+            // categoryform
+            // 
+            this.categoryform.Font = new System.Drawing.Font("Swis721 BT", 10F);
+            this.categoryform.Location = new System.Drawing.Point(268, 133);
+            this.categoryform.Multiline = true;
+            this.categoryform.Name = "categoryform";
+            this.categoryform.Size = new System.Drawing.Size(160, 24);
+            this.categoryform.TabIndex = 24;
+            this.categoryform.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Closer
+            // 
+            this.Closer.AutoSize = true;
+            this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
+            this.Closer.Location = new System.Drawing.Point(459, 9);
+            this.Closer.Name = "Closer";
+            this.Closer.Size = new System.Drawing.Size(28, 30);
+            this.Closer.TabIndex = 25;
+            this.Closer.Text = "X";
+            this.Closer.Click += new System.EventHandler(this.Closer_Click);
+            this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
+            this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave);
+            // 
             // IncomesAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(499, 260);
-            this.Controls.Add(this.Incomes);
+            this.Controls.Add(this.Closer);
             this.Controls.Add(this.categoryform);
+            this.Controls.Add(this.Incomes);
             this.Controls.Add(this.sumform);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -124,10 +141,11 @@
         #endregion
 
         private System.Windows.Forms.LinkLabel Incomes;
-        private System.Windows.Forms.ComboBox categoryform;
         private System.Windows.Forms.TextBox sumform;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button AddIncome;
+        private System.Windows.Forms.TextBox categoryform;
+        private System.Windows.Forms.Label Closer;
     }
 }
