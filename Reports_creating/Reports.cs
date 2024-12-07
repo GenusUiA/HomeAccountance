@@ -16,6 +16,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
         public Reports()
         {
             InitializeComponent();
+            dateform.MaxDate = DateTime.Now;
         }
 
         private void MainWindow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -49,7 +50,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
                             transactions.Add(new Transaction
                             {
                                 date = reader.GetDateTime(reader.GetOrdinal("date")),
-                                sum = reader.IsDBNull(reader.GetOrdinal("sum")) ? "0" : reader.GetString(reader.GetOrdinal("sum")),
+                                sum = reader.GetString(reader.GetOrdinal("sum")),
                                 category = reader.IsDBNull(reader.GetOrdinal("category")) ? "Не указана" : reader.GetString(reader.GetOrdinal("category")),
                                 place = reader.IsDBNull(reader.GetOrdinal("place")) ? "Не указано" : reader.GetString(reader.GetOrdinal("place"))
                             });
@@ -113,7 +114,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
 
         private async void CreateReport_Click(object sender, EventArgs e)
         {
-            DateTime startDate = dateTimePicker1.Value;
+            DateTime startDate = From.Value;
             DateTime endDate = dateform.Value;
             int userId = Session.Id; // ID пользователя для загрузки транзакций
             List<Transaction> transactions = await LoadTransactionsAsync(userId, startDate, endDate);
@@ -128,14 +129,12 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "Excel файлы (*.xlsx)|*.xlsx",
-                FileName = $"TransactionsReport_{DateTime.Now:yyyyMMdd}.xlsx"
+                FileName = $"TransactionsReport_{startDate + "-" + endDate}.xlsx"
             };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
-
-                // Создание Excel отчета
                 CreateExcelReport(transactions, filePath, startDate, endDate);
             }
         }

@@ -6,6 +6,11 @@ namespace Course_project_HOME_ACCOUNTANCE
     {
         public static string connectionString = "Server=localhost;Port=1111;Database=users; User Id = postgres; Password=1111";
         NpgsqlConnection sqlConnection = new NpgsqlConnection(connectionString);
+
+        public string constring()
+        {
+            return connectionString;
+        }
         public NpgsqlConnection ConnectionString()
         {
             return sqlConnection;

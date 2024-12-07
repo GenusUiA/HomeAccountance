@@ -79,10 +79,11 @@ namespace Course_project_HOME_ACCOUNTANCE
         
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            string username = LoginField.Text;
-            string password = PasswordField.Text;
-            string hashedPassword = HashPassword(password);
-            CompareWithDataFromDB(username, hashedPassword);
+            user User = new user();
+            User.login = LoginField.Text;
+            User.password = PasswordField.Text;
+            string hashedPassword = HashPassword(User.password);
+            CompareWithDataFromDB(User.login, hashedPassword);
         }
         private void Closer_MouseEnter(object sender, EventArgs e)
         {
@@ -96,6 +97,24 @@ namespace Course_project_HOME_ACCOUNTANCE
         private void Closer_MouseClick(object sender, MouseEventArgs e)
         {
             Application.Exit();
+        }
+
+        private bool passwordVisible = false;
+
+        private void pictureBoxEye_Click(object sender, EventArgs e)
+        {
+            passwordVisible = !passwordVisible;
+
+            if (passwordVisible)
+            {
+                PasswordField.PasswordChar = '\0'; // Показать пароль
+                pictureBoxEye.Image = Properties.Resources.eye;
+            }
+            else
+            {
+                PasswordField.PasswordChar = '*'; // Скрыть пароль
+                pictureBoxEye.Image = Properties.Resources.eyebrow;
+            }
         }
     }
 }

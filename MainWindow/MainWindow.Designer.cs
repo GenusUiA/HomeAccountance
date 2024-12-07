@@ -38,6 +38,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             this.Closer = new System.Windows.Forms.Label();
             this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.MainWind = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Home)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
@@ -90,7 +91,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             legend2.Name = "Legend1";
             legend2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.chartPie.Legends.Add(legend2);
-            this.chartPie.Location = new System.Drawing.Point(459, 97);
+            this.chartPie.Location = new System.Drawing.Point(374, 129);
             this.chartPie.Name = "chartPie";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -98,7 +99,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             series2.Legend = "Legend1";
             series2.Name = "Series2";
             this.chartPie.Series.Add(series2);
-            this.chartPie.Size = new System.Drawing.Size(567, 471);
+            this.chartPie.Size = new System.Drawing.Size(652, 439);
             this.chartPie.TabIndex = 13;
             this.chartPie.Text = "chart1";
             // 
@@ -112,6 +113,16 @@ namespace Course_project_HOME_ACCOUNTANCE
             this.MainWind.TabIndex = 14;
             this.MainWind.Text = "Main Window";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label3.Location = new System.Drawing.Point(683, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(133, 31);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Expenses";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -119,6 +130,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1066, 627);
             this.ControlBox = false;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.MainWind);
             this.Controls.Add(this.Closer);
             this.Controls.Add(this.panel1);
@@ -139,5 +151,6 @@ namespace Course_project_HOME_ACCOUNTANCE
         private Label Closer;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
         private Label MainWind;
+        private Label label3;
     }
 }

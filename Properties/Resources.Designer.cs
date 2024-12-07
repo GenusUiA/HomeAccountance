@@ -83,6 +83,26 @@ namespace Course_project_HOME_ACCOUNTANCE.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eye {
+            get {
+                object obj = ResourceManager.GetObject("eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eyebrow {
+            get {
+                object obj = ResourceManager.GetObject("eyebrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ffaeed41d7b0d4c357025efaf363b7d7 {
             get {
                 object obj = ResourceManager.GetObject("ffaeed41d7b0d4c357025efaf363b7d7", resourceCulture);

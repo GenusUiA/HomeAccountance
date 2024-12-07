@@ -92,5 +92,83 @@ namespace Course_project_HOME_ACCOUNTANCE.Settings
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
         }
+
+        void SaveChangesToDatabase(int id, string oldPassword, string newPassword)
+        {
+            string connectionString = "Server=localhost;Port=1111;Database=users;User Id=postgres;Password=1111";
+            string hashedOldPassword = HashPassword(oldPassword);
+            string hashedNewPassword = HashPassword(newPassword);
+            string queryVerify = "SELECT 1 FROM Users WHERE id = @id AND password = @hashedOldPassword";
+
+            using (var connectionVerify = new NpgsqlConnection(connectionString))
+            {
+                using (var commandVerify = new NpgsqlCommand(queryVerify, connectionVerify))
+                {
+                    commandVerify.Parameters.AddWithValue("@id", id);
+                    commandVerify.Parameters.AddWithValue("@hashedOldPassword", hashedOldPassword);
+                    try
+                    {
+                        connectionVerify.Open();
+                        if (commandVerify.ExecuteScalar() == null) 
+                        {
+                            MessageBox.Show("Неверный старый пароль.");
+                            return; 
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка проверки пароля: {ex.Message}");
+                        return;
+                    }
+                }
+            }
+
+            string queryUpdate = "UPDATE Users SET password = @hashedNewPassword WHERE id = @id";
+            using (var connectionUpdate = new NpgsqlConnection(connectionString))
+            {
+                using (var commandUpdate = new NpgsqlCommand(queryUpdate, connectionUpdate))
+                {
+                    commandUpdate.Parameters.AddWithValue("@id", id);
+                    commandUpdate.Parameters.AddWithValue("@hashedNewPassword", hashedNewPassword);
+                    try
+                    {
+                        connectionUpdate.Open();
+                        int result = commandUpdate.ExecuteNonQuery();
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Пароль изменен");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ошибка при изменении пароля");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка обновления пароля: {ex.Message}");
+                    }
+                }
+            }
+        }
+        private void confchang_Click(object sender, EventArgs e)
+        {
+            string password = oldpass.Text;
+            string confirmPassword = newpass.Text;
+
+            if (password == confirmPassword)
+            {
+                MessageBox.Show("Пароли совпадают");
+                return;
+            }
+
+            string newpassword = newpass.Text;
+            string reppassword = reppass.Text;
+            if (newpassword != reppassword)
+            {
+                MessageBox.Show("Пароли не совпадают");
+                return;
+            }
+            SaveChangesToDatabase(Session.Id, password, newpassword);
+        }
     }
 }

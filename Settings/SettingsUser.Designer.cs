@@ -202,6 +202,7 @@
             this.confchang.TabIndex = 51;
             this.confchang.Text = "Confirm changes";
             this.confchang.UseVisualStyleBackColor = false;
+            this.confchang.Click += new System.EventHandler(this.confchang_Click);
             // 
             // pictureBox1
             // 
@@ -230,6 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(495, 625);
+            this.ControlBox = false;
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.confchang);

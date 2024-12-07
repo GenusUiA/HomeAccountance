@@ -33,7 +33,7 @@
             this.CreateReport = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dateform = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.From = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.Closer = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -93,16 +93,16 @@
             this.dateform.TabIndex = 25;
             this.dateform.Value = new System.DateTime(2024, 11, 7, 0, 0, 0, 0);
             // 
-            // dateTimePicker1
+            // From
             // 
-            this.dateTimePicker1.AllowDrop = true;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(103, 150);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2024, 11, 7, 10, 30, 20, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(111, 22);
-            this.dateTimePicker1.TabIndex = 26;
-            this.dateTimePicker1.Value = new System.DateTime(2024, 11, 7, 0, 0, 0, 0);
+            this.From.AllowDrop = true;
+            this.From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.From.Location = new System.Drawing.Point(103, 150);
+            this.From.MaxDate = new System.DateTime(2024, 11, 7, 10, 30, 20, 0);
+            this.From.Name = "From";
+            this.From.Size = new System.Drawing.Size(111, 22);
+            this.From.TabIndex = 26;
+            this.From.Value = new System.DateTime(2024, 11, 7, 0, 0, 0, 0);
             // 
             // label4
             // 
@@ -148,7 +148,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Closer);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.From);
             this.Controls.Add(this.dateform);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CreateReport);
@@ -169,7 +169,7 @@
         private System.Windows.Forms.Button CreateReport;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateform;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker From;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label Closer;
         private System.Windows.Forms.PictureBox pictureBox1;

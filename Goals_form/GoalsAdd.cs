@@ -1,4 +1,5 @@
 ﻿using Course_project_HOME_ACCOUNTANCE.classes;
+using DocumentFormat.OpenXml.Wordprocessing;
 using iText.Layout.Element;
 using Npgsql;
 using NpgsqlTypes;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Color = System.Drawing.Color;
 
 namespace Course_project_HOME_ACCOUNTANCE.Goals_form
 {
@@ -20,6 +22,11 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
         public Goals()
         {
             InitializeComponent();
+            from.MaxDate = DateTime.Now;
+            from.MinDate = DateTime.Now;
+            from.Value = DateTime.Now;
+ 
+            For.Value = DateTime.Now;
         }
 
         private void SaveToDatabase(string definition, decimal sum, DateTime[] period, int id)
@@ -169,6 +176,13 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             this.Hide();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainWindow window = new MainWindow();
+            window.Show();
         }
     }
 }

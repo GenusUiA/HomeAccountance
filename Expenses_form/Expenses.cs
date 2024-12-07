@@ -64,25 +64,46 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
         {
             if (Transactions.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = Transactions.SelectedRows[0];
-                int transactionId = Convert.ToInt32(row.Cells[0].Value);
                 Transaction transaction = new Transaction();
+                List<int> transactionIdsToDelete = new List<int>();
+
+                // Collect the IDs of all selected transactions
+                foreach (DataGridViewRow row in Transactions.SelectedRows)
+                {
+                    int transactionId = Convert.ToInt32(row.Cells[0].Value); // Assuming the ID is in the first cell (index 0)
+                    transactionIdsToDelete.Add(transactionId);
+                }
 
                 try
                 {
-                    transaction.DeleteTransactionFromDatabase(transactionId);
+                    // Delete all selected transactions
+                    foreach (int transactionId in transactionIdsToDelete)
+                    {
+                        transaction.DeleteTransactionFromDatabase(transactionId);
+                    }
+
+                    // Refresh the DataGridView
                     List<Transaction> transactions = transaction.GetUserTrans();
                     Transactions.DataSource = transactions;
-                    MessageBox.Show("Транзакция успешно удалена.");
+
+                    // Display success message (adjusting the wording based on the number of deleted transactions)
+                    if (transactionIdsToDelete.Count == 1)
+                    {
+                        MessageBox.Show("Транзакция успешно удалена.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Транзакции успешно удалены.");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка при удалении транзакции: {ex.Message}");
+                    MessageBox.Show($"Ошибка при удалении транзакций: {ex.Message}");
                 }
             }
             else
             {
-                MessageBox.Show("Пожалуйста, выберите транзакцию для удаления.");
+                MessageBox.Show("Пожалуйста, выберите транзакции для удаления.");
             }
         }
 
@@ -288,6 +309,10 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
         private void LoadTr_Click(object sender, EventArgs e)
         {
             LoadDataFromExcel();
+            Transaction transaction = new Transaction();
+            List<Transaction> transactions = transaction.GetUserTrans();
+            Transactions.DataSource = transactions;
+            Transactions.Columns["trans_id"].Visible = false;
         }
     }
 } 

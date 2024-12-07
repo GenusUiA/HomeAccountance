@@ -2,7 +2,9 @@
 using Course_project_HOME_ACCOUNTANCE.Incomes_form;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Course_project_HOME_ACCOUNTANCE
@@ -13,6 +15,7 @@ namespace Course_project_HOME_ACCOUNTANCE
         public Incomes()
         {
             InitializeComponent();
+            LoadNames();
         }
 
         private void pictureBox1_Click(object sender, System.EventArgs e)
@@ -36,6 +39,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             Income income = new Income();
             List<Income> incomes = income.GetUserIncome();
             Inc.DataSource = incomes;
+            Inc.Columns["income_id"].Visible = false;
         }
 
         private void addincome_Click(object sender, System.EventArgs e)
@@ -50,14 +54,13 @@ namespace Course_project_HOME_ACCOUNTANCE
             if (Inc.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = Inc.SelectedRows[0];
-                int sum = Convert.ToInt32(row.Cells["sum"].Value);
-                string category = row.Cells["category"].Value.ToString();
-                Income inc = new Income();
+                int IncomeId = Convert.ToInt32(row.Cells[0].Value);
+                Income income = new Income(); 
                 try
                 {
-                    inc.DeleteIncomeFromDatabase(sum, category);
-                    List<Income> income = inc.GetUserIncome();
-                    Inc.DataSource = income;
+                    income.DeleteIncomeFromDatabase(IncomeId);
+                    List<Income> incomes = income.GetUserIncome();
+                    Inc.DataSource = incomes;
                     MessageBox.Show("Доход успешно удален.");
                 }
                 catch (Exception ex)
@@ -84,6 +87,58 @@ namespace Course_project_HOME_ACCOUNTANCE
         private void Closer_MouseLeave(object sender, EventArgs e)
         {
             Closer.ForeColor = Color.Black;
+        }
+
+        void LoadNames()
+        {
+            List<String> Names = new List<String> { "Sum", "Category" };
+            for (int i = 0; i < 2; i++)
+            {
+                this.sorting_form.Items.Add(Names[i]);
+            }
+        }
+
+        private bool switched = false;
+
+        private void Sorting_Click(object sender, EventArgs e)
+        {
+            string selectedColumn = sorting_form.SelectedItem?.ToString();
+
+            if (string.IsNullOrEmpty(selectedColumn))
+            {
+                MessageBox.Show("Пожалуйста, выберите параметр для сортировки.");
+                return;
+            }
+            string sortDirection = switched ? "DESC" : "ASC";
+
+            try
+            {
+                List<Income> Incomes = new List<Income>();
+                Income income = new Income();
+                Incomes = income.GetUserIncome();
+
+                switch (selectedColumn)
+                {
+                    case "Sum":
+                        Incomes = (sortDirection == "ASC")
+                            ? Incomes.OrderBy(t => t.sum).ToList()
+                            : Incomes.OrderByDescending(t => t.sum).ToList();
+                        break;
+                    case "Category":
+                        Incomes = (sortDirection == "ASC")
+                            ? Incomes.OrderBy(t => t.category).ToList()
+                            : Incomes.OrderByDescending(t => t.category).ToList();
+                        break;
+                }
+                BindingSource IncBindingSource = new BindingSource();
+                IncBindingSource.DataSource = Incomes;
+                Inc.DataSource = IncBindingSource;
+                switched = !switched;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при выполнении сортировки: " + ex.Message);
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Session = Course_project_HOME_ACCOUNTANCE.classes.Session;
@@ -25,10 +26,12 @@ namespace Course_project_HOME_ACCOUNTANCE
         public MainWindow()
         {
             InitializeComponent();
-            CreateMenuPanel();
             SetupPictureBoxClick();
             LoadChartData();
             LoadGoals();
+            LoadSum(Session.Id);
+            CheckAndDisplayWelcomeMessage();
+            CreateMenuPanel();
         }
 
 
@@ -64,10 +67,12 @@ namespace Course_project_HOME_ACCOUNTANCE
                 menuButton.MouseLeave += (s, e) =>
                     ((Button)s).BackColor = Color.FromArgb(214, 238, 245);
                 menuButton.Click += MenuButton_Click;
+                menuButton.BringToFront();
                 menuPanel.Controls.Add(menuButton);
             }
 
             this.Controls.Add(menuPanel);
+            menuPanel.BringToFront();
         }
 
         private void MenuButton_Click(object sender, EventArgs e)
@@ -178,6 +183,7 @@ namespace Course_project_HOME_ACCOUNTANCE
         {
             try
             {
+
                 Database database = new Database();
                 database.OpenConnection();
                 string query = @"SELECT category, sum FROM ""Transactions"" WHERE id = @id";
@@ -224,14 +230,17 @@ namespace Course_project_HOME_ACCOUNTANCE
                         }
                     }
 
+                    ChartArea chartArea = chartPie.ChartAreas[0]; 
+
                     TextAnnotation annotation = new TextAnnotation
                     {
                         Text = $"{totalSum}$", // Общая сумма с форматированием валюты
                         Font = new Font("Arial", 12, FontStyle.Bold),
                         ForeColor = Color.Black,
                         Alignment = ContentAlignment.MiddleCenter,
-                        AnchorX = 27, 
-                        AnchorY = 54 
+                        AnchorX = 29,
+                        AnchorY = 54,
+                        
                     };
                     chartPie.Annotations.Add(annotation);
 
@@ -302,18 +311,16 @@ namespace Course_project_HOME_ACCOUNTANCE
             ProgressBar progressBar = new ProgressBar();
             Label goalLabel = new Label();
 
-            progressBar.Width = 150; // Adjust width as needed
+            progressBar.Width = 75; 
             progressBar.Minimum = 0;
-            progressBar.Maximum = 100; // Установите максимальное значение прогресс бара
+            progressBar.Maximum = 100; 
             progressBar.Step = 1;
             goalLabel.Text = goalName;
             goalLabel.AutoSize = true;
-
-            // Improved layout: account for label size and add spacing
-            int labelWidth = goalLabel.Width;  //Get width of the label AFTER setting the text
-            if (labelWidth == 0) labelWidth = 100; // fallback value if AutoSize fails
-            goalLabel.Location = new Point(70, yOffset);
-            progressBar.Location = new Point(labelWidth + 20, yOffset); // Add spacing
+            goalLabel.Text = ShortenGoalName(goalName);
+            int labelWidth = goalLabel.Width;   
+            goalLabel.Location = new Point(100, yOffset);
+            progressBar.Location = new Point(labelWidth, yOffset); 
 
             this.Controls.Add(goalLabel);
             this.Controls.Add(progressBar);
@@ -322,7 +329,7 @@ namespace Course_project_HOME_ACCOUNTANCE
 
         private void UpdateGoalProgress(string goalName, decimal currentSum, decimal totalSum)
         {
-            if (totalSum <= 0) return; // Avoid division by zero
+            if (totalSum <= 0) return; 
 
             var goal = goalProgress.FirstOrDefault(g => g.Item2.Text == goalName);
             if (goal != null)
@@ -333,6 +340,15 @@ namespace Course_project_HOME_ACCOUNTANCE
             }
         }
 
+        private string ShortenGoalName(string goalName, int maxLength = 20)
+        {
+            if (goalName.Length > maxLength)
+            {
+                return goalName.Substring(0, maxLength - 3) + "...";
+            }
+            return goalName;
+        }
+
         private void LoadGoals()
         {
             try
@@ -341,12 +357,12 @@ namespace Course_project_HOME_ACCOUNTANCE
                 {
                     connection.Open();
                     List<GoalData> goals = GetGoalsFromDatabase(connection);
-                    int yOffset = 70; // Start a bit lower
+                    int yOffset = 110; 
                     foreach (var goal in goals)
                     {
                         AddGoalProgressBar(goal.definition, yOffset);
                         UpdateGoalProgress(goal.definition, goal.current_sum, goal.sum);
-                        yOffset += 40; // Increase vertical spacing
+                        yOffset += 40;
                     }
                 }
             }
@@ -384,7 +400,37 @@ namespace Course_project_HOME_ACCOUNTANCE
             }
             return goals;
         }
+        //private void LoadGoals()
+        //{
+        //    try
+        //    {
+        //        using (var connection = new NpgsqlConnection(Database.connectionString))
+        //        {
+        //            connection.Open();
+        //            Goal goales = new Goal();
+        //            Database db = new Database();
+        //            List<Goal> goals = goales.GetGoalsFromDatabase(db.ConnectionString());
+        //            int yOffset = 110;
+        //            foreach (var goal in goals)
+        //            {
+        //                AddGoalProgressBar(goal.definition, yOffset);
+        //                UpdateGoalProgress(goal.definition, goal.current_sum, goal.sum);
+        //                yOffset += 40;
+        //                DateTime expirationDate = (DateTime)goal.period[1];
 
+        //                if (expirationDate < DateTime.Now && !goal.isNotified)
+        //                {
+        //                    MessageBox.Show($"Цель \"{goal.definition}\" просрочена!");
+        //                    goal.isNotified = true;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error loading goals: {ex.Message}");
+        //    }
+        //}
         private class GoalData
         {
             public string definition { get; set; }
@@ -392,36 +438,133 @@ namespace Course_project_HOME_ACCOUNTANCE
             public decimal sum { get; set; }
         }
 
-        private List<GoalData> GetGoalsFromDatabase()
+        private void LoadSum(int id)
         {
-            List<GoalData> goals = new List<GoalData>();
+            Database db = new Database();
+            string query = "SELECT COALESCE(SUM(sum), 0) FROM \"Incomes\" WHERE id = @id";
+
+            Label totalsum = new Label();
+            totalsum.Name = "totalsum";
+            totalsum.Font = new Font("Microsoft Sans Serif", 16F);
+            totalsum.AutoSize = true;
+            totalsum.Text = "Общая сумма доходов: "; 
+
+            totalsum.Location = new Point(140, this.ClientSize.Height - 50);
+
+            this.Controls.Add(totalsum);
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(db.constring()))
+            {
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                {
+                    try
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            decimal sum = Convert.ToDecimal(result);
+                            totalsum.Text = totalsum.Text + sum;
+                        }
+                        else
+                        {
+                            totalsum.Text = "Общая сумма доходов: 0";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при загрузке суммы: {ex.Message}");
+                        totalsum.Text = "Ошибка загрузки";
+                    }
+                }
+            }
+        }
+
+        private void CheckAndDisplayWelcomeMessage()
+        {
+            bool hasTransactions = CheckUserHasTransactions();
+            bool hasGoals = CheckUserHasGoals();
+
+            if (!hasTransactions && !hasGoals)
+            {
+                // Создаем Panel для центрального сообщения
+                Panel welcomePanel = new Panel
+                {
+                    Width = this.ClientSize.Width - 150, // Ширина минус ширина меню
+                    Height = this.ClientSize.Height - 100,
+                    Location = new Point(130, 50), // Отступ слева от меню
+                    BackColor = Color.FromArgb(169, 227, 243)
+                };
+
+                // Создаем Label с приветственным сообщением
+                Label welcomeLabel = new Label
+                {
+                    Text = "Добро пожаловать в Home Accountance!\n\n" +
+                           "Чтобы начать пользоваться приложением:\n\n" +
+                           "1. Перейдите в раздел 'Доходы' и добавьте первые поступления\n" +
+                           "2. В разделе 'Расходы' внесите свои траты\n" +
+                           "3. Установите финансовые цели в разделе 'Цели'\n\n" +
+                           "Это поможет вам эффективно управлять личными финансами",
+                    Font = new Font("Microsoft Sans Serif", 16F),
+                    AutoSize = false,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Dock = DockStyle.Fill
+                };
+
+                // Добавляем Label на Panel
+                welcomePanel.Controls.Add(welcomeLabel);
+
+                // Добавляем Panel на форму
+                this.Controls.Add(welcomePanel);
+                welcomePanel.BringToFront();
+            }
+        }
+
+        private bool CheckUserHasTransactions()
+        {
             try
             {
-                string sql = "SELECT definition, current_sum, sum FROM \"Goals\" WHERE id = @id";
-                using (NpgsqlCommand command = new NpgsqlCommand(sql, db.ConnectionString()))
+                using (var connection = new NpgsqlConnection(Database.connectionString))
                 {
-                    command.Parameters.AddWithValue("@id", Session.Id);
-                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new NpgsqlCommand(
+                        "SELECT COUNT(*) FROM \"Transactions\" WHERE id = @id", connection))
                     {
-                        while (reader.Read())
-                        {
-                            GoalData goal = new GoalData
-                            {
-                                definition = reader.GetString(0),
-                                current_sum = reader.GetDecimal(1),
-                                sum = reader.GetDecimal(2),
-                            };
-                            goals.Add(goal);
-                        }
+                        command.Parameters.AddWithValue("@id", Session.Id);
+                        long count = Convert.ToInt64(command.ExecuteScalar());
+                        return count > 0;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error fetching Goals from database");
+                MessageBox.Show($"Ошибка проверки транзакций: {ex.Message}");
+                return false;
             }
+        }
 
-            return goals;
+        private bool CheckUserHasGoals()
+        {
+            try
+            {
+                using (var connection = new NpgsqlConnection(Database.connectionString))
+                {
+                    connection.Open();
+                    using (var command = new NpgsqlCommand(
+                        "SELECT COUNT(*) FROM \"Goals\" WHERE id = @id", connection))
+                    {
+                        command.Parameters.AddWithValue("@id", Session.Id);
+                        long count = Convert.ToInt64(command.ExecuteScalar());
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка проверки целей: {ex.Message}");
+                return false;
+            }
         }
     }
 }

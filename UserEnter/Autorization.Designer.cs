@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Autorization));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBoxEye = new System.Windows.Forms.PictureBox();
             this.Closer = new System.Windows.Forms.Label();
             this.LinkLabelRegister = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +52,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
+            this.panel2.Controls.Add(this.pictureBoxEye);
             this.panel2.Controls.Add(this.Closer);
             this.panel2.Controls.Add(this.LinkLabelRegister);
             this.panel2.Controls.Add(this.label3);
@@ -65,6 +68,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(646, 595);
             this.panel2.TabIndex = 3;
+            // 
+            // pictureBoxEye
+            // 
+            this.pictureBoxEye.BackColor = System.Drawing.Color.White;
+            this.pictureBoxEye.Image = global::Course_project_HOME_ACCOUNTANCE.Properties.Resources.eyebrow;
+            this.pictureBoxEye.Location = new System.Drawing.Point(507, 332);
+            this.pictureBoxEye.Name = "pictureBoxEye";
+            this.pictureBoxEye.Size = new System.Drawing.Size(41, 40);
+            this.pictureBoxEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxEye.TabIndex = 12;
+            this.pictureBoxEye.TabStop = false;
+            this.pictureBoxEye.Click += new System.EventHandler(this.pictureBoxEye_Click);
             // 
             // Closer
             // 
@@ -106,7 +121,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(233)))), ((int)(((byte)(241)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.label2.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(205, 71);
             this.label2.Name = "label2";
@@ -116,7 +131,7 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(233)))), ((int)(((byte)(241)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.label1.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(234, 9);
             this.label1.Name = "label1";
@@ -192,6 +207,7 @@
             this.Text = "Autorization";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -212,5 +228,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label Closer;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.PictureBox pictureBoxEye;
     }
 }

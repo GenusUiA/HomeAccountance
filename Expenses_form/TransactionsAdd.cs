@@ -16,6 +16,7 @@ namespace Course_project_HOME_ACCOUNTANCE
         {
             InitializeComponent();
             LoadCategories();
+            dateform.MaxDate = DateTime.Now;    
         }
 
         private void LoadCategories()

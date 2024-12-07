@@ -362,6 +362,8 @@
     <None Include="Resources\png-transparent-computer-icons-navigation-bar-home-home-angle-building-text.png" />
     <None Include="Resources\vecteezy_home-icon-isolated-on-transparent-background-black-symbol_14391893.png" />
     <None Include="Resources\Undo-Transparent-Background.png" />
+    <None Include="Resources\eyebrow.png" />
+    <None Include="Resources\eye.png" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
   </ItemGroup>

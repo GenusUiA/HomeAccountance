@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Npgsql;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Course_project_HOME_ACCOUNTANCE.classes
 {
@@ -45,32 +46,9 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
 
         public List<Transaction> searchCategory(string searchCateg)
         {
-            List<Transaction> returnThese = new List<Transaction>();
-            Database db = new Database();
-            db.OpenConnection();
-            int id = Session.Id;
-            NpgsqlCommand command = new NpgsqlCommand();
-            string SubString = "%" + searchCateg + "%";
-            command.CommandText = "SELECT * FROM \"Transactions\" WHERE id = @id AND category LIKE @searchCateg";
-            command.Connection = db.ConnectionString();
-            command.Parameters.AddWithValue("@id", id);
-            command.Parameters.AddWithValue("@searchCateg", SubString);
-            using (NpgsqlDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    Transaction trans = new Transaction
-                    {
-                        date = reader.GetDateTime(1),
-                        sum = reader.GetString(2),
-                        category = reader.GetString(3),
-                        place = reader.GetString(4),
-                    };
-                    returnThese.Add(trans);
-                }
-                db.CloseConnection();
-            }
-            return returnThese;
+            Transaction trans = new Transaction();
+            List<Transaction> transes = trans.GetUserTrans(); 
+            return transes.Where(X => X.category.Contains(searchCateg)).ToList();
         }
 
         public void DeleteTransactionFromDatabase(int transactionId)

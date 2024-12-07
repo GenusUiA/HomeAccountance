@@ -102,6 +102,14 @@ namespace Course_project_HOME_ACCOUNTANCE
 
         private void ButtonRegister_Click(object sender, EventArgs e)
         {
+            string password = PasswordField.Text;
+            string confirmPassword = ConfirmPasswordField.Text; 
+
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Пароли не совпадают");
+                return;
+            }
             user User = new user();
             User.login = LoginField.Text;
             User.password = PasswordField.Text;
@@ -126,6 +134,46 @@ namespace Course_project_HOME_ACCOUNTANCE
         private void Closer_MouseLeave_1(object sender, EventArgs e)
         {
             Closer.ForeColor = Color.Black;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Autorization autoriz = new Autorization();
+            autoriz.Show();
+        }
+
+        private bool passwordVisible = false;
+        private void pictureBoxEye_Click(object sender, EventArgs e)
+        {
+            passwordVisible = !passwordVisible;
+
+            if (passwordVisible)
+            {
+                PasswordField.PasswordChar = '\0'; // Показать пароль
+                pictureBoxEye.Image = Properties.Resources.eye;
+            }
+            else
+            {
+                PasswordField.PasswordChar = '*'; // Скрыть пароль
+                pictureBoxEye.Image = Properties.Resources.eyebrow;
+            }
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            passwordVisible = !passwordVisible;
+
+            if (passwordVisible)
+            {
+                ConfirmPasswordField.PasswordChar = '\0'; // Показать пароль
+                PictureEye.Image = Properties.Resources.eye;
+            }
+            else
+            {
+                ConfirmPasswordField.PasswordChar = '*'; // Скрыть пароль
+                PictureEye.Image = Properties.Resources.eyebrow;
+            }
         }
     }
 }
