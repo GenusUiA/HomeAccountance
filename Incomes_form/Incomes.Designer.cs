@@ -46,7 +46,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label1.Location = new System.Drawing.Point(373, 11);
+            this.label1.Location = new System.Drawing.Point(300, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 39);
             this.label1.TabIndex = 0;
@@ -55,7 +55,7 @@
             // sorting_form
             // 
             this.sorting_form.FormattingEnabled = true;
-            this.sorting_form.Location = new System.Drawing.Point(477, 448);
+            this.sorting_form.Location = new System.Drawing.Point(404, 454);
             this.sorting_form.Name = "sorting_form";
             this.sorting_form.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.sorting_form.Size = new System.Drawing.Size(121, 24);
@@ -65,7 +65,7 @@
             // 
             this.Closer.AutoSize = true;
             this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
-            this.Closer.Location = new System.Drawing.Point(853, 8);
+            this.Closer.Location = new System.Drawing.Point(707, 15);
             this.Closer.Name = "Closer";
             this.Closer.Size = new System.Drawing.Size(28, 30);
             this.Closer.TabIndex = 23;
@@ -77,7 +77,7 @@
             // Searcher
             // 
             this.Searcher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Searcher.Location = new System.Drawing.Point(323, 86);
+            this.Searcher.Location = new System.Drawing.Point(250, 92);
             this.Searcher.Multiline = true;
             this.Searcher.Name = "Searcher";
             this.Searcher.Size = new System.Drawing.Size(148, 29);
@@ -87,7 +87,7 @@
             // 
             this.Search.BackColor = System.Drawing.Color.White;
             this.Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Search.Location = new System.Drawing.Point(468, 86);
+            this.Search.Location = new System.Drawing.Point(395, 92);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(85, 29);
             this.Search.TabIndex = 21;
@@ -100,19 +100,19 @@
             this.Inc.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.Inc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Inc.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.Inc.Location = new System.Drawing.Point(238, 163);
+            this.Inc.Location = new System.Drawing.Point(198, 155);
             this.Inc.Name = "Inc";
             this.Inc.RowHeadersWidth = 51;
             this.Inc.RowTemplate.Height = 24;
             this.Inc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Inc.Size = new System.Drawing.Size(420, 248);
+            this.Inc.Size = new System.Drawing.Size(339, 248);
             this.Inc.TabIndex = 20;
             // 
             // removeincome
             // 
             this.removeincome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.removeincome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.removeincome.Location = new System.Drawing.Point(632, 442);
+            this.removeincome.Location = new System.Drawing.Point(559, 448);
             this.removeincome.Name = "removeincome";
             this.removeincome.Size = new System.Drawing.Size(176, 33);
             this.removeincome.TabIndex = 19;
@@ -124,7 +124,7 @@
             // 
             this.Sorting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.Sorting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Sorting.Location = new System.Drawing.Point(322, 442);
+            this.Sorting.Location = new System.Drawing.Point(249, 448);
             this.Sorting.Name = "Sorting";
             this.Sorting.Size = new System.Drawing.Size(149, 33);
             this.Sorting.TabIndex = 18;
@@ -136,7 +136,7 @@
             // 
             this.addincome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.addincome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.addincome.Location = new System.Drawing.Point(106, 442);
+            this.addincome.Location = new System.Drawing.Point(33, 448);
             this.addincome.Name = "addincome";
             this.addincome.Size = new System.Drawing.Size(180, 33);
             this.addincome.TabIndex = 17;
@@ -147,7 +147,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Course_project_HOME_ACCOUNTANCE.Properties.Resources.Undo_Transparent_Background;
-            this.pictureBox1.Location = new System.Drawing.Point(31, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(33, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(71, 52);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -160,7 +160,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(895, 519);
+            this.ClientSize = new System.Drawing.Size(742, 519);
             this.ControlBox = false;
             this.Controls.Add(this.sorting_form);
             this.Controls.Add(this.pictureBox1);

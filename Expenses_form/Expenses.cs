@@ -21,11 +21,12 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
 {
     public partial class Expenses : Form
     {
+
+        private static bool switched = false;
         public Expenses()
         {
             InitializeComponent();
             LoadNames();
-            Sorting.Click += Sorting_Click;
         }
 
         private void AddIncome_Click(object sender, EventArgs e)
@@ -66,27 +67,22 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
             {
                 Transaction transaction = new Transaction();
                 List<int> transactionIdsToDelete = new List<int>();
-
-                // Collect the IDs of all selected transactions
                 foreach (DataGridViewRow row in Transactions.SelectedRows)
                 {
-                    int transactionId = Convert.ToInt32(row.Cells[0].Value); // Assuming the ID is in the first cell (index 0)
+                    int transactionId = Convert.ToInt32(row.Cells[0].Value); 
                     transactionIdsToDelete.Add(transactionId);
                 }
 
                 try
                 {
-                    // Delete all selected transactions
                     foreach (int transactionId in transactionIdsToDelete)
                     {
                         transaction.DeleteTransactionFromDatabase(transactionId);
                     }
 
-                    // Refresh the DataGridView
                     List<Transaction> transactions = transaction.GetUserTrans();
                     Transactions.DataSource = transactions;
 
-                    // Display success message (adjusting the wording based on the number of deleted transactions)
                     if (transactionIdsToDelete.Count == 1)
                     {
                         MessageBox.Show("Транзакция успешно удалена.");
@@ -116,8 +112,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
             }
         }
 
-        private bool switched = false;
-
+        private List<Transaction> transactions = new List<Transaction>();
         private void Sorting_Click(object sender, EventArgs e)
         {
             string selectedColumn = sorting_form.SelectedItem?.ToString();
@@ -127,13 +122,16 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
                 MessageBox.Show("Пожалуйста, выберите параметр для сортировки.");
                 return;
             }
+
             string sortDirection = switched ? "DESC" : "ASC";
 
             try
             {
-                List<Transaction> transactions = new List<Transaction>();
-                Transaction transaction = new Transaction();
-                transactions = transaction.GetUserTrans();
+                if (transactions.Count == 0)
+                {
+                    Transaction transaction = new Transaction();
+                    transactions = transaction.GetUserTrans();
+                }
 
                 switch (selectedColumn)
                 {
@@ -158,6 +156,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
                             : transactions.OrderByDescending(t => t.place).ToList();
                         break;
                 }
+
                 BindingSource TransBindingSource = new BindingSource();
                 TransBindingSource.DataSource = transactions;
                 Transactions.DataSource = TransBindingSource;

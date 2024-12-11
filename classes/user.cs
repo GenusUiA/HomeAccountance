@@ -9,6 +9,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
     public static class Session
     {
         public static int Id { get; set; }
+        public static bool isGoalStatusChecked { get; set; }   
     }
 
     public class user

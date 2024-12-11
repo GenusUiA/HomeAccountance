@@ -25,11 +25,12 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             from.MaxDate = DateTime.Now;
             from.MinDate = DateTime.Now;
             from.Value = DateTime.Now;
- 
+
             For.Value = DateTime.Now;
+            For.MinDate = from.Value;
         }
 
-        private void SaveToDatabase(string definition, decimal sum, DateTime[] period, int id)
+        private void SaveGoalToDatabase(string definition, decimal sum, DateTime[] period, int id)
         {
             string query = "INSERT INTO \"Goals\" (definition, sum, period, id) VALUES (@definition, @sum, @period, @id)";
             Database database = new Database();
@@ -62,7 +63,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             goal.definition = defform.Text;
             goal.sum = decimal.Parse(sumform.Text); 
             goal.period = new DateTime[] { from.Value, For.Value };
-            SaveToDatabase(goal.definition, goal.sum, goal.period, Session.Id);
+            SaveGoalToDatabase(goal.definition, goal.sum, goal.period, Session.Id);
         }
 
         private void Closer_Click(object sender, EventArgs e)
@@ -159,7 +160,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
         private void DelGoal_Click(object sender, EventArgs e)
         {
             Goal goal = new Goal();
-            goal.definition = defform.Text;
+            goal.definition = deldef.Text;
             DeleteGoalFromDatabase(goal.definition, Session.Id);
         }
 

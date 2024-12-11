@@ -14,7 +14,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
         public decimal sum { get; set; }
         public decimal current_sum { get; set; }
         public DateTime[] period { get; set; }
-        //public bool isNotified { get; set; } = false;
+
         public List<Goal> GetGoalsFromDatabase(NpgsqlConnection connection)
         {
             List<Goal> goals = new List<Goal>();
@@ -46,6 +46,31 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
                 MessageBox.Show($"Error fetching goals from database: {ex.Message}");
             }
             return goals;
+        }
+
+        public DateTime[] GetPeriod(NpgsqlConnection connection)
+        {
+            DateTime[] period = null;
+            try
+            {
+                using (var command = new NpgsqlCommand("SELECT period FROM \"Goals\" WHERE id = @id AND definition = @definition", connection))
+                {
+                    command.Parameters.AddWithValue("@id", Session.Id);
+                    command.Parameters.AddWithValue("@definition", definition);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            period = reader.GetFieldValue<DateTime[]>(0);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching goal period from database: {ex.Message}");
+            }
+            return period;
         }
     }
 }
