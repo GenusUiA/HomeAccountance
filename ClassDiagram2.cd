@@ -7,7 +7,7 @@
       <FileName>classes\Database.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Course_project_HOME_ACCOUNTANCE.TransactionsAdd" Collapsed="true">
+  <Class Name="Course_project_HOME_ACCOUNTANCE.TransactionsAdd">
     <Position X="5.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABEAAAAAACAgEBAEAACQAAACAoACAAAAAQAIACCAgIA=</HashCode>
@@ -63,7 +63,7 @@
       <FileName>classes\Income.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Course_project_HOME_ACCOUNTANCE.classes.Transaction" Collapsed="true">
+  <Class Name="Course_project_HOME_ACCOUNTANCE.classes.Transaction">
     <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABBAQAAAARAAAAAACAAAAAAAAQAAAAAAIAQAgAAA=</HashCode>
@@ -73,7 +73,7 @@
   <Class Name="Course_project_HOME_ACCOUNTANCE.classes.Session">
     <Position X="7.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>classes\user.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -124,7 +124,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="Course_project_HOME_ACCOUNTANCE.Reports_creating.Reports" Collapsed="true">
+  <Class Name="Course_project_HOME_ACCOUNTANCE.Reports_creating.Reports">
     <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAIAAAACAEABAAAACAAAACCIACAAEAAACCACDAAIA=</HashCode>

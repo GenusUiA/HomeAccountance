@@ -41,10 +41,8 @@ namespace Course_project_HOME_ACCOUNTANCE
             string query = "INSERT INTO Users (login, password) VALUES (@login, @password)";
             if (UserExists(username, connectionString))
             {
-                MessageBox.Show("User already exist");
-                this.Hide();
-                LoginForm temp = new LoginForm();
-                temp.ShowDialog();
+                MessageBox.Show("Такой пользователь уже существует");
+                return;
             }
             using (var connection = new NpgsqlConnection(connectionString))
             {
@@ -103,22 +101,24 @@ namespace Course_project_HOME_ACCOUNTANCE
         private void ButtonRegister_Click(object sender, EventArgs e)
         {
             string password = PasswordField.Text;
-            string confirmPassword = ConfirmPasswordField.Text; 
+            string confirmPassword = ConfirmPasswordField.Text;
 
             if (password != confirmPassword)
             {
                 MessageBox.Show("Пароли не совпадают");
                 return;
             }
-            user User = new user();
-            User.login = LoginField.Text;
-            User.password = PasswordField.Text;
-            string hashedPassword = HashPassword(User.password);
-            SaveToDatabase(User.login, hashedPassword);
-            Autorization Autoriz = new Autorization();
-            this.Hide();
-            Autoriz.ShowDialog();
-            this.Hide();
+            else
+            {
+                user User = new user();
+                User.login = LoginField.Text;
+                User.password = PasswordField.Text;
+                string hashedPassword = HashPassword(User.password);
+                SaveToDatabase(User.login, hashedPassword);
+                Autorization Autoriz = new Autorization();
+                this.Hide();
+                Autoriz.ShowDialog();
+            }
         }
 
         private void Closer_Click(object sender, EventArgs e)

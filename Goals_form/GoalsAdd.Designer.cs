@@ -65,21 +65,21 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label3.Location = new System.Drawing.Point(601, 264);
+            this.label3.Location = new System.Drawing.Point(581, 267);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 31);
+            this.label3.Size = new System.Drawing.Size(101, 31);
             this.label3.TabIndex = 26;
-            this.label3.Text = "sum";
+            this.label3.Text = "Сумма";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label2.Location = new System.Drawing.Point(37, 88);
+            this.label2.Location = new System.Drawing.Point(29, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 31);
+            this.label2.Size = new System.Drawing.Size(137, 31);
             this.label2.TabIndex = 25;
-            this.label2.Text = "definition";
+            this.label2.Text = "Название";
             // 
             // AddGoal
             // 
@@ -89,7 +89,7 @@
             this.AddGoal.Name = "AddGoal";
             this.AddGoal.Size = new System.Drawing.Size(212, 33);
             this.AddGoal.TabIndex = 24;
-            this.AddGoal.Text = "Add goal";
+            this.AddGoal.Text = "Добавить цель";
             this.AddGoal.UseVisualStyleBackColor = false;
             this.AddGoal.Click += new System.EventHandler(this.AddGoal_Click);
             // 
@@ -123,11 +123,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(418, 88);
+            this.label1.Location = new System.Drawing.Point(431, 88);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 31);
+            this.label1.Size = new System.Drawing.Size(34, 31);
             this.label1.TabIndex = 33;
-            this.label1.Text = "from";
+            this.label1.Text = "С";
             // 
             // label4
             // 
@@ -135,9 +135,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label4.Location = new System.Drawing.Point(618, 88);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 31);
+            this.label4.Size = new System.Drawing.Size(49, 31);
             this.label4.TabIndex = 34;
-            this.label4.Text = "for";
+            this.label4.Text = "По";
             // 
             // Closer
             // 
@@ -166,11 +166,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label5.Location = new System.Drawing.Point(98, 267);
+            this.label5.Location = new System.Drawing.Point(90, 267);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 31);
+            this.label5.Size = new System.Drawing.Size(137, 31);
             this.label5.TabIndex = 36;
-            this.label5.Text = "definition";
+            this.label5.Text = "Название";
             // 
             // DelGoal
             // 
@@ -180,7 +180,7 @@
             this.DelGoal.Name = "DelGoal";
             this.DelGoal.Size = new System.Drawing.Size(212, 33);
             this.DelGoal.TabIndex = 38;
-            this.DelGoal.Text = "Delete goal";
+            this.DelGoal.Text = "Удалить цель";
             this.DelGoal.UseVisualStyleBackColor = false;
             this.DelGoal.Click += new System.EventHandler(this.DelGoal_Click);
             // 
@@ -192,7 +192,7 @@
             this.SumAdd.Name = "SumAdd";
             this.SumAdd.Size = new System.Drawing.Size(212, 33);
             this.SumAdd.TabIndex = 41;
-            this.SumAdd.Text = "Add sum";
+            this.SumAdd.Text = "Добавить сумму";
             this.SumAdd.UseVisualStyleBackColor = false;
             this.SumAdd.Click += new System.EventHandler(this.SumAdd_Click);
             // 
@@ -210,11 +210,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label6.Location = new System.Drawing.Point(405, 267);
+            this.label6.Location = new System.Drawing.Point(397, 267);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(123, 31);
+            this.label6.Size = new System.Drawing.Size(137, 31);
             this.label6.TabIndex = 39;
-            this.label6.Text = "definition";
+            this.label6.Text = "Название";
             // 
             // addsum
             // 
@@ -230,11 +230,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label7.Location = new System.Drawing.Point(241, 88);
+            this.label7.Location = new System.Drawing.Point(222, 88);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 31);
+            this.label7.Size = new System.Drawing.Size(101, 31);
             this.label7.TabIndex = 42;
-            this.label7.Text = "sum";
+            this.label7.Text = "Сумма";
             // 
             // pictureBox1
             // 
@@ -253,9 +253,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label8.Location = new System.Drawing.Point(313, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 39);
+            this.label8.Size = new System.Drawing.Size(99, 39);
             this.label8.TabIndex = 45;
-            this.label8.Text = "Goals";
+            this.label8.Text = "Цели";
             // 
             // Goals
             // 

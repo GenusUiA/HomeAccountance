@@ -35,6 +35,8 @@
             this.AddIncome = new System.Windows.Forms.Button();
             this.categoryform = new System.Windows.Forms.TextBox();
             this.Closer = new System.Windows.Forms.Label();
+            this.dateform = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Incomes
@@ -44,19 +46,19 @@
             this.Incomes.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.Incomes.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.Incomes.LinkColor = System.Drawing.Color.Black;
-            this.Incomes.Location = new System.Drawing.Point(174, 27);
+            this.Incomes.Location = new System.Drawing.Point(235, 20);
             this.Incomes.Name = "Incomes";
-            this.Incomes.Size = new System.Drawing.Size(126, 33);
+            this.Incomes.Size = new System.Drawing.Size(122, 33);
             this.Incomes.TabIndex = 23;
             this.Incomes.TabStop = true;
-            this.Incomes.Text = "Incomes";
+            this.Incomes.Text = "Доходы";
             this.Incomes.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Incomes.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Incomes_LinkClicked);
             // 
             // sumform
             // 
             this.sumform.Font = new System.Drawing.Font("Swis721 BT", 10F);
-            this.sumform.Location = new System.Drawing.Point(61, 133);
+            this.sumform.Location = new System.Drawing.Point(32, 133);
             this.sumform.Multiline = true;
             this.sumform.Name = "sumform";
             this.sumform.Size = new System.Drawing.Size(125, 24);
@@ -67,38 +69,38 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label3.Location = new System.Drawing.Point(91, 82);
+            this.label3.Location = new System.Drawing.Point(47, 82);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 31);
+            this.label3.Size = new System.Drawing.Size(101, 31);
             this.label3.TabIndex = 17;
-            this.label3.Text = "sum";
+            this.label3.Text = "Сумма";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label2.Location = new System.Drawing.Point(289, 82);
+            this.label2.Location = new System.Drawing.Point(224, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 31);
+            this.label2.Size = new System.Drawing.Size(144, 31);
             this.label2.TabIndex = 16;
-            this.label2.Text = "category";
+            this.label2.Text = "Категория";
             // 
             // AddIncome
             // 
             this.AddIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.AddIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.AddIncome.Location = new System.Drawing.Point(130, 202);
+            this.AddIncome.Location = new System.Drawing.Point(187, 186);
             this.AddIncome.Name = "AddIncome";
             this.AddIncome.Size = new System.Drawing.Size(212, 33);
             this.AddIncome.TabIndex = 15;
-            this.AddIncome.Text = "Add income";
+            this.AddIncome.Text = "Добавить доход";
             this.AddIncome.UseVisualStyleBackColor = false;
             this.AddIncome.Click += new System.EventHandler(this.AddIncome_Click);
             // 
             // categoryform
             // 
             this.categoryform.Font = new System.Drawing.Font("Swis721 BT", 10F);
-            this.categoryform.Location = new System.Drawing.Point(268, 133);
+            this.categoryform.Location = new System.Drawing.Point(217, 133);
             this.categoryform.Multiline = true;
             this.categoryform.Name = "categoryform";
             this.categoryform.Size = new System.Drawing.Size(160, 24);
@@ -109,7 +111,7 @@
             // 
             this.Closer.AutoSize = true;
             this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
-            this.Closer.Location = new System.Drawing.Point(459, 9);
+            this.Closer.Location = new System.Drawing.Point(554, 9);
             this.Closer.Name = "Closer";
             this.Closer.Size = new System.Drawing.Size(28, 30);
             this.Closer.TabIndex = 25;
@@ -118,12 +120,36 @@
             this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
             this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave);
             // 
+            // dateform
+            // 
+            this.dateform.AllowDrop = true;
+            this.dateform.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateform.Location = new System.Drawing.Point(430, 135);
+            this.dateform.MaxDate = new System.DateTime(2024, 11, 22, 0, 0, 0, 0);
+            this.dateform.Name = "dateform";
+            this.dateform.Size = new System.Drawing.Size(134, 22);
+            this.dateform.TabIndex = 27;
+            this.dateform.Value = new System.DateTime(2024, 11, 7, 0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label1.Location = new System.Drawing.Point(458, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 31);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Дата";
+            // 
             // IncomesAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(499, 260);
+            this.ClientSize = new System.Drawing.Size(594, 231);
+            this.ControlBox = false;
+            this.Controls.Add(this.dateform);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Closer);
             this.Controls.Add(this.categoryform);
             this.Controls.Add(this.Incomes);
@@ -147,5 +173,7 @@
         private System.Windows.Forms.Button AddIncome;
         private System.Windows.Forms.TextBox categoryform;
         private System.Windows.Forms.Label Closer;
+        private System.Windows.Forms.DateTimePicker dateform;
+        private System.Windows.Forms.Label label1;
     }
 }

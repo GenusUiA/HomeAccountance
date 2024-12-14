@@ -13,6 +13,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
         public int income_id { get; set; }
         public decimal sum { get; set; }
         public string category { get; set; }
+        public DateTime date {get; set;}
 
         public List<Income> GetUserIncome()
         {
@@ -20,7 +21,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
             Database db = new Database();
             db.OpenConnection();
             int id = Session.Id;
-            NpgsqlCommand command = new NpgsqlCommand("SELECT income_id, sum, category FROM \"Incomes\" WHERE id = @id", db.ConnectionString());
+            NpgsqlCommand command = new NpgsqlCommand("SELECT income_id, sum, category, date FROM \"Incomes\" WHERE id = @id", db.ConnectionString());
             command.Parameters.AddWithValue("@id", id);
             using (NpgsqlDataReader reader = command.ExecuteReader())
             {
@@ -31,6 +32,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
                         income_id = reader.GetInt32(0),
                         sum = reader.GetDecimal(1),
                         category = reader.GetString(2),
+                        date = reader.GetDateTime(3)
                     };
                     returnThese.Add(income);
                 }

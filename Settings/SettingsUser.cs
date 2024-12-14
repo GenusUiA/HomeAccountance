@@ -40,10 +40,14 @@ namespace Course_project_HOME_ACCOUNTANCE.Settings
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Ваш аккаунт успешно удален");
+                            this.Hide();
+                            Autorization autorization = new Autorization();
+                            autorization.Show();
                         }
                         else
                         {
                             MessageBox.Show("Неверный логин, пароль");
+                            return;
                         }
                     }
                     catch (Exception ex)
@@ -74,9 +78,6 @@ namespace Course_project_HOME_ACCOUNTANCE.Settings
             string Password = password.Text;
             int id = Session.Id;
             DeleteUserFromDB(Login, HashPassword(Password), id);
-            this.Hide();
-            Autorization autorization = new Autorization();
-            autorization.Show();
         }
 
         private void logout_Click(object sender, EventArgs e)
@@ -169,6 +170,21 @@ namespace Course_project_HOME_ACCOUNTANCE.Settings
                 return;
             }
             SaveChangesToDatabase(Session.Id, password, newpassword);
+        }
+
+        private void Closer_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Closer_MouseLeave(object sender, EventArgs e)
+        {
+            Closer.ForeColor = Color.Black;
+        }
+
+        private void Closer_MouseEnter(object sender, EventArgs e)
+        {
+            Closer.ForeColor = Color.Red;
         }
     }
 }

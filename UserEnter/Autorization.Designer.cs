@@ -101,43 +101,43 @@
             this.LinkLabelRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LinkLabelRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.LinkLabelRegister.LinkColor = System.Drawing.Color.Black;
-            this.LinkLabelRegister.Location = new System.Drawing.Point(375, 520);
+            this.LinkLabelRegister.Location = new System.Drawing.Point(338, 520);
             this.LinkLabelRegister.Name = "LinkLabelRegister";
-            this.LinkLabelRegister.Size = new System.Drawing.Size(145, 20);
+            this.LinkLabelRegister.Size = new System.Drawing.Size(175, 20);
             this.LinkLabelRegister.TabIndex = 9;
             this.LinkLabelRegister.TabStop = true;
-            this.LinkLabelRegister.Text = "REGISTER HERE";
+            this.LinkLabelRegister.Text = "Зарегистрируйтесь";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(178, 520);
+            this.label3.Location = new System.Drawing.Point(192, 520);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(176, 20);
+            this.label3.Size = new System.Drawing.Size(123, 20);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Don\'t have an account";
+            this.label3.Text = "Нет аккаунта";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.label2.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(205, 71);
+            this.label2.Location = new System.Drawing.Point(205, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(261, 55);
+            this.label2.Size = new System.Drawing.Size(275, 55);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Autorization";
+            this.label2.Text = "Авторизация";
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.label1.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(234, 9);
+            this.label1.Location = new System.Drawing.Point(75, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 50);
+            this.label1.Size = new System.Drawing.Size(545, 62);
             this.label1.TabIndex = 7;
-            this.label1.Text = "FamilyFin";
+            this.label1.Text = "Домашняя бухгалтерия";
             // 
             // EnterButton
             // 
@@ -150,7 +150,7 @@
             this.EnterButton.Name = "EnterButton";
             this.EnterButton.Size = new System.Drawing.Size(143, 44);
             this.EnterButton.TabIndex = 4;
-            this.EnterButton.Text = "Enter";
+            this.EnterButton.Text = "Войти";
             this.EnterButton.UseVisualStyleBackColor = false;
             // 
             // PasswordField

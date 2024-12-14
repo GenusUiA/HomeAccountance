@@ -46,29 +46,29 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label1.Location = new System.Drawing.Point(49, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 20);
+            this.label1.Size = new System.Drawing.Size(21, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "From";
+            this.label1.Text = "С";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(415, 150);
+            this.label2.Location = new System.Drawing.Point(269, 153);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 20);
+            this.label2.Size = new System.Drawing.Size(32, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "for";
+            this.label2.Text = "По";
             // 
             // CreateReport
             // 
             this.CreateReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.CreateReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.CreateReport.Location = new System.Drawing.Point(214, 200);
+            this.CreateReport.Location = new System.Drawing.Point(135, 208);
             this.CreateReport.Name = "CreateReport";
             this.CreateReport.Size = new System.Drawing.Size(180, 33);
             this.CreateReport.TabIndex = 4;
-            this.CreateReport.Text = "Create report";
+            this.CreateReport.Text = "Создать отчет";
             this.CreateReport.UseVisualStyleBackColor = false;
             this.CreateReport.Click += new System.EventHandler(this.CreateReport_Click);
             // 
@@ -76,17 +76,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label3.Location = new System.Drawing.Point(220, 89);
+            this.label3.Location = new System.Drawing.Point(149, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(151, 29);
+            this.label3.Size = new System.Drawing.Size(154, 29);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Transactions";
+            this.label3.Text = "Транзакции";
             // 
             // dateform
             // 
             this.dateform.AllowDrop = true;
             this.dateform.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateform.Location = new System.Drawing.Point(450, 150);
+            this.dateform.Location = new System.Drawing.Point(304, 153);
             this.dateform.MaxDate = new System.DateTime(2024, 11, 7, 10, 30, 20, 0);
             this.dateform.Name = "dateform";
             this.dateform.Size = new System.Drawing.Size(107, 22);
@@ -97,7 +97,7 @@
             // 
             this.From.AllowDrop = true;
             this.From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.From.Location = new System.Drawing.Point(103, 150);
+            this.From.Location = new System.Drawing.Point(76, 150);
             this.From.MaxDate = new System.DateTime(2024, 11, 7, 10, 30, 20, 0);
             this.From.Name = "From";
             this.From.Size = new System.Drawing.Size(111, 22);
@@ -108,17 +108,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label4.Location = new System.Drawing.Point(235, 9);
+            this.label4.Location = new System.Drawing.Point(164, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(136, 39);
             this.label4.TabIndex = 27;
-            this.label4.Text = "Reports";
+            this.label4.Text = "Отчеты";
             // 
             // Closer
             // 
             this.Closer.AutoSize = true;
             this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
-            this.Closer.Location = new System.Drawing.Point(600, 9);
+            this.Closer.Location = new System.Drawing.Point(412, 9);
             this.Closer.Name = "Closer";
             this.Closer.Size = new System.Drawing.Size(28, 30);
             this.Closer.TabIndex = 28;
@@ -143,7 +143,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(640, 267);
+            this.ClientSize = new System.Drawing.Size(452, 267);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Closer);

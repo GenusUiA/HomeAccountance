@@ -47,19 +47,19 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label1.Location = new System.Drawing.Point(61, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 31);
+            this.label1.Size = new System.Drawing.Size(77, 31);
             this.label1.TabIndex = 1;
-            this.label1.Text = "date";
+            this.label1.Text = "Дата";
             // 
             // CreateTransaction
             // 
             this.CreateTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.CreateTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.CreateTransaction.Location = new System.Drawing.Point(266, 203);
+            this.CreateTransaction.Location = new System.Drawing.Point(253, 185);
             this.CreateTransaction.Name = "CreateTransaction";
-            this.CreateTransaction.Size = new System.Drawing.Size(212, 33);
+            this.CreateTransaction.Size = new System.Drawing.Size(223, 33);
             this.CreateTransaction.TabIndex = 2;
-            this.CreateTransaction.Text = "Create transaction";
+            this.CreateTransaction.Text = "Создать транзакцию";
             this.CreateTransaction.UseVisualStyleBackColor = false;
             this.CreateTransaction.Click += new System.EventHandler(this.CreateTransaction_Click);
             // 
@@ -67,21 +67,21 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label2.Location = new System.Drawing.Point(402, 79);
+            this.label2.Location = new System.Drawing.Point(394, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 31);
+            this.label2.Size = new System.Drawing.Size(144, 31);
             this.label2.TabIndex = 3;
-            this.label2.Text = "category";
+            this.label2.Text = "Категория";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label3.Location = new System.Drawing.Point(239, 79);
+            this.label3.Location = new System.Drawing.Point(222, 79);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 31);
+            this.label3.Size = new System.Drawing.Size(101, 31);
             this.label3.TabIndex = 4;
-            this.label3.Text = "sum";
+            this.label3.Text = "Сумма";
             // 
             // label4
             // 
@@ -89,9 +89,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label4.Location = new System.Drawing.Point(618, 79);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 31);
+            this.label4.Size = new System.Drawing.Size(92, 31);
             this.label4.TabIndex = 5;
-            this.label4.Text = "place";
+            this.label4.Text = "Место";
             // 
             // sumform
             // 
@@ -141,10 +141,10 @@
             this.Expenses.LinkColor = System.Drawing.Color.Black;
             this.Expenses.Location = new System.Drawing.Point(311, 23);
             this.Expenses.Name = "Expenses";
-            this.Expenses.Size = new System.Drawing.Size(143, 33);
+            this.Expenses.Size = new System.Drawing.Size(134, 33);
             this.Expenses.TabIndex = 13;
             this.Expenses.TabStop = true;
-            this.Expenses.Text = "Expenses";
+            this.Expenses.Text = "Расходы";
             this.Expenses.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Expenses.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Expenses_LinkClicked);
             // 
@@ -167,7 +167,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(776, 260);
+            this.ClientSize = new System.Drawing.Size(776, 240);
             this.ControlBox = false;
             this.Controls.Add(this.Closer);
             this.Controls.Add(this.Expenses);

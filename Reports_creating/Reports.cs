@@ -17,6 +17,37 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
         {
             InitializeComponent();
             dateform.MaxDate = DateTime.Now;
+
+            From.MaxDate = DateTime.Now;
+            dateform.MaxDate = DateTime.Now;
+            From.Value = DateTime.Now;
+            dateform.Value = DateTime.Now;
+
+            // Привязка обработчиков событий
+            From.ValueChanged += From_ValueChanged;
+            dateform.ValueChanged += For_ValueChanged;
+
+            void From_ValueChanged(object sender, EventArgs e)
+            {
+                // Проверка: начальная дата не должна быть больше конечной
+                if (From.Value > dateform.Value)
+                {
+                    // Если начальная дата больше конечной, то конечная приравнивается к начальной
+                    dateform.Value = From.Value;
+                }
+                dateform.MinDate = From.Value;
+            }
+
+            void For_ValueChanged(object sender, EventArgs e)
+            {
+                // Проверка: Конечная дата не должна быть меньше начальной
+                if (dateform.Value < From.Value)
+                {
+                    // Если конечная дата меньше начальной, то начальная приравнивается к конечной
+                    From.Value = dateform.Value;
+                }
+
+            }
         }
 
         private void MainWindow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -30,7 +61,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
         {
             List<Transaction> transactions = new List<Transaction>();
             var db = new Database();
-
+          
             try
             {
                 await db.OpenConnectionAsync();
@@ -74,6 +105,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
         {
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 var excel = new Microsoft.Office.Interop.Excel.Application();
                 Workbook workbook = excel.Workbooks.Add(Type.Missing);
                 Worksheet worksheet = (Worksheet)workbook.ActiveSheet;
@@ -109,6 +141,10 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при создании отчета: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
             }
         }
 

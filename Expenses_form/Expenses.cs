@@ -1,5 +1,6 @@
 ﻿using Course_project_HOME_ACCOUNTANCE.classes;
 using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.Office.Interop.Excel;
 using Npgsql;
 using System;
@@ -27,6 +28,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
         {
             InitializeComponent();
             LoadNames();
+            Transactions.Columns["trans_id"].Visible = false;
         }
 
         private void AddIncome_Click(object sender, EventArgs e)
@@ -51,7 +53,6 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
             Transaction transaction = new Transaction();
             List<Transaction> transactions = transaction.GetUserTrans();
             Transactions.DataSource = transactions;
-            Transactions.Columns["trans_id"].Visible = false;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -69,7 +70,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
                 List<int> transactionIdsToDelete = new List<int>();
                 foreach (DataGridViewRow row in Transactions.SelectedRows)
                 {
-                    int transactionId = Convert.ToInt32(row.Cells[0].Value); 
+                    int transactionId = Convert.ToInt32(row.Cells["trans_id"].Value); 
                     transactionIdsToDelete.Add(transactionId);
                 }
 
@@ -105,7 +106,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
 
         void LoadNames()         
         {
-            List<String> Names = new List<String> { "Date", "Sum", "Category", "Place" };
+            List<String> Names = new List<String> { "Дате", "Сумме", "Категории", "Месту" };
             for(int i = 0; i < Names.Capacity; i++)
             {
                 this.sorting_form.Items.Add(Names[i]);
@@ -135,22 +136,22 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
 
                 switch (selectedColumn)
                 {
-                    case "Date":
+                    case "Дате":
                         transactions = (sortDirection == "ASC")
                             ? transactions.OrderBy(t => t.date).ToList()
                             : transactions.OrderByDescending(t => t.date).ToList();
                         break;
-                    case "Sum":
+                    case "Сумме":
                         transactions = (sortDirection == "ASC")
                             ? transactions.OrderBy(t => ConvertToInt(t.sum)).ToList()
                             : transactions.OrderByDescending(t => ConvertToInt(t.sum)).ToList();
                         break;
-                    case "Category":
+                    case "Категории":
                         transactions = (sortDirection == "ASC")
                             ? transactions.OrderBy(t => t.category).ToList()
                             : transactions.OrderByDescending(t => t.category).ToList();
                         break;
-                    case "Place":
+                    case "Месту":
                         transactions = (sortDirection == "ASC")
                             ? transactions.OrderBy(t => t.place).ToList()
                             : transactions.OrderByDescending(t => t.place).ToList();
@@ -210,6 +211,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
             {
                 return new List<Transaction>();
             }
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
                 var excelApp = new Microsoft.Office.Interop.Excel.Application();
@@ -267,6 +269,10 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
             {
                 MessageBox.Show($"Ошибка при обработке файла Excel: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
             return transactions;
         }
 
@@ -311,7 +317,15 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
             Transaction transaction = new Transaction();
             List<Transaction> transactions = transaction.GetUserTrans();
             Transactions.DataSource = transactions;
-            Transactions.Columns["trans_id"].Visible = false;
+        }
+
+        private void Searcher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                Search.PerformClick();
+                e.Handled = true;
+            }
         }
     }
 } 

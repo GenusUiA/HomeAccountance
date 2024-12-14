@@ -16,7 +16,6 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
         public string sum { get; set; }
         public string category { get; set; }
         public string place { get; set; }
-        public bool swiched { get; set; }
 
         public List<Transaction> GetUserTrans()
         {

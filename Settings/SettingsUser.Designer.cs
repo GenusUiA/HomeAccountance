@@ -45,6 +45,7 @@
             this.confchang = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.Closer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +53,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(160, 60);
+            this.label1.Location = new System.Drawing.Point(173, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 25);
+            this.label1.Size = new System.Drawing.Size(145, 25);
             this.label1.TabIndex = 34;
-            this.label1.Text = "Change password";
+            this.label1.Text = "Смена пароля";
             // 
             // label2
             // 
@@ -64,9 +65,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label2.Location = new System.Drawing.Point(28, 202);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 25);
+            this.label2.Size = new System.Drawing.Size(152, 25);
             this.label2.TabIndex = 35;
-            this.label2.Text = "repeat password";
+            this.label2.Text = "Повтор пароля";
             // 
             // label3
             // 
@@ -74,9 +75,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label3.Location = new System.Drawing.Point(28, 158);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 25);
+            this.label3.Size = new System.Drawing.Size(141, 25);
             this.label3.TabIndex = 36;
-            this.label3.Text = "new password";
+            this.label3.Text = "Новый пароль";
             // 
             // label4
             // 
@@ -84,9 +85,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label4.Location = new System.Drawing.Point(28, 113);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 25);
+            this.label4.Size = new System.Drawing.Size(153, 25);
             this.label4.TabIndex = 37;
-            this.label4.Text = "old password";
+            this.label4.Text = "Старый пароль";
             // 
             // reppass
             // 
@@ -126,7 +127,7 @@
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(212, 33);
             this.delete.TabIndex = 44;
-            this.delete.Text = "Delete an account";
+            this.delete.Text = "Удалить аккаунт";
             this.delete.UseVisualStyleBackColor = false;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -156,9 +157,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label5.Location = new System.Drawing.Point(76, 366);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 25);
+            this.label5.Size = new System.Drawing.Size(68, 25);
             this.label5.TabIndex = 46;
-            this.label5.Text = "Login";
+            this.label5.Text = "Логин";
             // 
             // label6
             // 
@@ -166,29 +167,29 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label6.Location = new System.Drawing.Point(76, 410);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 25);
+            this.label6.Size = new System.Drawing.Size(80, 25);
             this.label6.TabIndex = 45;
-            this.label6.Text = "Password";
+            this.label6.Text = "Пароль";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label7.Location = new System.Drawing.Point(160, 323);
+            this.label7.Location = new System.Drawing.Point(150, 324);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(169, 25);
+            this.label7.Size = new System.Drawing.Size(189, 25);
             this.label7.TabIndex = 49;
-            this.label7.Text = "Delete an account";
+            this.label7.Text = "Удаление аккаунта";
             // 
             // logout
             // 
             this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.logout.Location = new System.Drawing.Point(128, 542);
+            this.logout.Location = new System.Drawing.Point(95, 542);
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(212, 33);
+            this.logout.Size = new System.Drawing.Size(270, 33);
             this.logout.TabIndex = 50;
-            this.logout.Text = "log out of your account";
+            this.logout.Text = "Выйти из учетной записи";
             this.logout.UseVisualStyleBackColor = false;
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
@@ -196,11 +197,11 @@
             // 
             this.confchang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.confchang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.confchang.Location = new System.Drawing.Point(131, 251);
+            this.confchang.Location = new System.Drawing.Point(113, 256);
             this.confchang.Name = "confchang";
-            this.confchang.Size = new System.Drawing.Size(212, 33);
+            this.confchang.Size = new System.Drawing.Size(252, 33);
             this.confchang.TabIndex = 51;
-            this.confchang.Text = "Confirm changes";
+            this.confchang.Text = "Подтвердить изменения";
             this.confchang.UseVisualStyleBackColor = false;
             this.confchang.Click += new System.EventHandler(this.confchang_Click);
             // 
@@ -219,11 +220,24 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label8.Location = new System.Drawing.Point(176, 9);
+            this.label8.Location = new System.Drawing.Point(152, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 39);
+            this.label8.Size = new System.Drawing.Size(187, 39);
             this.label8.TabIndex = 53;
-            this.label8.Text = "Settings";
+            this.label8.Text = "Настройки";
+            // 
+            // Closer
+            // 
+            this.Closer.AutoSize = true;
+            this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
+            this.Closer.Location = new System.Drawing.Point(455, 9);
+            this.Closer.Name = "Closer";
+            this.Closer.Size = new System.Drawing.Size(28, 30);
+            this.Closer.TabIndex = 54;
+            this.Closer.Text = "X";
+            this.Closer.Click += new System.EventHandler(this.Closer_Click);
+            this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
+            this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave);
             // 
             // SettingsUser
             // 
@@ -232,6 +246,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(495, 625);
             this.ControlBox = false;
+            this.Controls.Add(this.Closer);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.confchang);
@@ -275,5 +290,6 @@
         private System.Windows.Forms.Button confchang;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label Closer;
     }
 }

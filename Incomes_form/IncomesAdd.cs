@@ -17,6 +17,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
         public IncomesAdd()
         {
             InitializeComponent();
+            dateform.MaxDate = DateTime.Now;
         }
 
         private void Incomes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -26,9 +27,9 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
             incomes.Show();
         }
 
-        void SaveToDatabase(int sum, string category, int id)
+        void SaveToDatabase(int sum, string category, int id, DateTime date)
         {
-            string query = "INSERT INTO \"Incomes\" (sum, category, id) VALUES (@sum, @category, @id)";
+            string query = "INSERT INTO \"Incomes\" (sum, category, id, date) VALUES (@sum, @category, @id, @date)";
             Database database = new Database();
             database.OpenConnection();
             try
@@ -38,6 +39,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
                     command.Parameters.AddWithValue("@sum", sum);
                     command.Parameters.AddWithValue("@category", category);
                     command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@date", date);
                     command.ExecuteNonQuery();
                     MessageBox.Show("Доход успешно создан!");
                 }
@@ -58,7 +60,10 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
             int sum;
             int.TryParse(summa, out sum);
             string category = categoryform.Text;
-            SaveToDatabase(sum, category, Session.Id);
+            string dateString = dateform.Text;
+            DateTime date;
+            DateTime.TryParse(dateString, out date);
+            SaveToDatabase(sum, category, Session.Id, date);
         }
 
         private void Closer_Click(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace Course_project_HOME_ACCOUNTANCE
         {
             InitializeComponent();
             LoadNames();
+            Inc.AutoGenerateColumns = false;
         }
 
         private void pictureBox1_Click(object sender, System.EventArgs e)
@@ -39,7 +40,6 @@ namespace Course_project_HOME_ACCOUNTANCE
             Income income = new Income();
             List<Income> incomes = income.GetUserIncome();
             Inc.DataSource = incomes;
-            Inc.Columns["income_id"].Visible = false;
         }
 
         private void addincome_Click(object sender, System.EventArgs e)
@@ -54,7 +54,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             if (Inc.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = Inc.SelectedRows[0];
-                int IncomeId = Convert.ToInt32(row.Cells[0].Value);
+                int IncomeId = Convert.ToInt32(row.Cells["income_id"].Value);
                 Income income = new Income(); 
                 try
                 {
@@ -91,8 +91,8 @@ namespace Course_project_HOME_ACCOUNTANCE
 
         void LoadNames()
         {
-            List<String> Names = new List<String> { "Sum", "Category" };
-            for (int i = 0; i < 2; i++)
+            List<String> Names = new List<String> { "Сумме", "Категории", "Дате" };
+            for (int i = 0; i < 3; i++)
             {
                 this.sorting_form.Items.Add(Names[i]);
             }
@@ -119,15 +119,20 @@ namespace Course_project_HOME_ACCOUNTANCE
 
                 switch (selectedColumn)
                 {
-                    case "Sum":
+                    case "Сумме":
                         Incomes = (sortDirection == "ASC")
                             ? Incomes.OrderBy(t => t.sum).ToList()
                             : Incomes.OrderByDescending(t => t.sum).ToList();
                         break;
-                    case "Category":
+                    case "Категории":
                         Incomes = (sortDirection == "ASC")
                             ? Incomes.OrderBy(t => t.category).ToList()
                             : Incomes.OrderByDescending(t => t.category).ToList();
+                        break;
+                    case "Дате":
+                        Incomes = (sortDirection == "ASC")
+                            ? Incomes.OrderBy(t => t.date).ToList()
+                            : Incomes.OrderByDescending(t => t.date).ToList();
                         break;
                 }
                 BindingSource IncBindingSource = new BindingSource();

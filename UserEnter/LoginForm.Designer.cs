@@ -35,14 +35,14 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.Closer = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.ConfirmPasswordField = new System.Windows.Forms.TextBox();
             this.ButtonRegister = new System.Windows.Forms.Button();
             this.PasswordField = new System.Windows.Forms.TextBox();
             this.LoginField = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureEye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).BeginInit();
@@ -55,13 +55,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
+            this.panel2.Controls.Add(this.Closer);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.PictureEye);
             this.panel2.Controls.Add(this.pictureBoxEye);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.Closer);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.ConfirmPasswordField);
             this.panel2.Controls.Add(this.ButtonRegister);
             this.panel2.Controls.Add(this.PasswordField);
@@ -132,28 +132,6 @@
             this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
             this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave_1);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.label2.Font = new System.Drawing.Font("SuperFrench", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.label2.Location = new System.Drawing.Point(236, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(209, 38);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Registration";
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.label1.Font = new System.Drawing.Font("Swis721 Ex BT", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(196, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(268, 50);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "FamilyFin";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ConfirmPasswordField
             // 
             this.ConfirmPasswordField.Font = new System.Drawing.Font("Swis721 BT", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -170,11 +148,11 @@
             this.ButtonRegister.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.ButtonRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ButtonRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonRegister.Location = new System.Drawing.Point(272, 499);
+            this.ButtonRegister.Location = new System.Drawing.Point(219, 502);
             this.ButtonRegister.Name = "ButtonRegister";
-            this.ButtonRegister.Size = new System.Drawing.Size(116, 35);
+            this.ButtonRegister.Size = new System.Drawing.Size(228, 35);
             this.ButtonRegister.TabIndex = 4;
-            this.ButtonRegister.Text = "Register";
+            this.ButtonRegister.Text = "Зарегистрироваться";
             this.ButtonRegister.UseVisualStyleBackColor = false;
             this.ButtonRegister.Click += new System.EventHandler(this.ButtonRegister_Click);
             // 
@@ -215,6 +193,27 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
+            this.label1.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(131, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(531, 62);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Домашняя бухгалтерия";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
+            this.label2.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(227, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(270, 55);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Регистрация";
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -245,12 +244,12 @@
         private System.Windows.Forms.TextBox PasswordField;
         private System.Windows.Forms.Button ButtonRegister;
         private System.Windows.Forms.TextBox ConfirmPasswordField;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Closer;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox PictureEye;
         private System.Windows.Forms.PictureBox pictureBoxEye;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

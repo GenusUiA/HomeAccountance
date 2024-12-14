@@ -5,6 +5,8 @@ using Course_project_HOME_ACCOUNTANCE.Properties;
 using Course_project_HOME_ACCOUNTANCE.Reports_creating;
 using Course_project_HOME_ACCOUNTANCE.Settings;
 using DocumentFormat.OpenXml.InkML;
+using DocumentFormat.OpenXml.Office.Word;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,8 @@ using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Color = System.Drawing.Color;
+using Font = System.Drawing.Font;
 using Session = Course_project_HOME_ACCOUNTANCE.classes.Session;
 
 namespace Course_project_HOME_ACCOUNTANCE
@@ -23,24 +27,87 @@ namespace Course_project_HOME_ACCOUNTANCE
     {
         private Panel menuPanel;
         private bool MenuClick = true;
+        
 
         public MainWindow()
         {
             InitializeComponent();
             SetupPictureBoxClick();
-            LoadChartData();
             LoadGoals();
-            LoadSum(Session.Id);
+            DateTime minDate = new DateTime(1, 1, 1);
+            DateTime maxDate = new DateTime(9999, 12, 31);
+
+            LoadChartData(minDate, maxDate);
+            LoadSum(minDate, maxDate);
             CheckAndDisplayWelcomeMessage();
             CreateMenuPanel();
             if (!Session.isGoalStatusChecked)
             {
                 CheckGoalStatus();
             }
+
+            From.MaxDate = DateTime.Now;
+            For.MaxDate = DateTime.Now; 
+            From.Value = DateTime.Now;  
+            For.Value = DateTime.Now; 
+
+            // Привязка обработчиков событий
+            From.ValueChanged += From_ValueChanged;
+            For.ValueChanged += For_ValueChanged;
+
+            From1.MaxDate = DateTime.Now;
+            For1.MaxDate = DateTime.Now;
+            From1.Value = DateTime.Now;
+            For1.Value = DateTime.Now;
+
+            // Привязка обработчиков событий
+            From1.ValueChanged += From1_ValueChanged;
+            For1.ValueChanged += For1_ValueChanged;
+            void From_ValueChanged(object sender, EventArgs e)
+            {
+                // Проверка: начальная дата не должна быть больше конечной
+                if (From.Value > For.Value)
+                {
+                    // Если начальная дата больше конечной, то конечная приравнивается к начальной
+                    For.Value = From.Value;
+                }
+                For.MinDate = From.Value;
+            }
+
+            void For_ValueChanged(object sender, EventArgs e)
+            {
+                // Проверка: Конечная дата не должна быть меньше начальной
+                if (For.Value < From.Value)
+                {
+                    // Если конечная дата меньше начальной, то начальная приравнивается к конечной
+                    From.Value = For.Value;
+                }
+
+            }
+
+            void From1_ValueChanged(object sender, EventArgs e)
+            {
+                // Проверка: начальная дата не должна быть больше конечной
+                if (From1.Value > For1.Value)
+                {
+                    // Если начальная дата больше конечной, то конечная приравнивается к начальной
+                    For1.Value = From1.Value;
+                }
+                For1.MinDate = From1.Value;
+            }
+
+            void For1_ValueChanged(object sender, EventArgs e)
+            {
+                // Проверка: Конечная дата не должна быть меньше начальной
+                if (For1.Value < From1.Value)
+                {
+                    // Если конечная дата меньше начальной, то начальная приравнивается к конечной
+                    From1.Value = For1.Value;
+                }
+
+            }
         }
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
 
         private void CreateMenuPanel()               //создание кнопок и панелек меню
         {
@@ -52,7 +119,7 @@ namespace Course_project_HOME_ACCOUNTANCE
                 BackColor = Color.FromArgb(214, 238, 245)
             };
 
-            string[] menuItems = { "Incomes", "Expenses", "Reports", "Goals", "Settings" };
+            string[] menuItems = { "Доходы", "Расходы", "Отчеты", "Цели", "Настройки" };
             for (int i = 0; i < menuItems.Length; i++)
             {
                 Button menuButton = new Button
@@ -89,27 +156,27 @@ namespace Course_project_HOME_ACCOUNTANCE
             {
                 switch (button.Name)
                 {
-                    case "Expenses":
+                    case "Расходы":
                         this.Hide();
                         Expenses expenses = new Expenses();
                         expenses.Show();
                         break;
-                    case "Incomes":
+                    case "Доходы":
                         this.Hide();
                         Incomes incomes = new Incomes();
                         incomes.Show();
                         break;
-                    case "Reports":
+                    case "Отчеты":
                         this.Hide();
                         Reports reports = new Reports();
                         reports.Show();
                         break;
-                    case "Goals":
+                    case "Цели":
                         this.Hide();
                         Goals goals = new Goals();
                         goals.Show();
                         break;
-                    case "Settings":
+                    case "Настройки":
                         this.Hide();
                         SettingsUser settings = new SettingsUser();
                         settings.Show();
@@ -186,16 +253,21 @@ namespace Course_project_HOME_ACCOUNTANCE
             Application.Exit();
         }
 
-        private void LoadChartData()
+        private void LoadChartData(DateTime startDate, DateTime endDate)
         {
+            chartPie.Series["Series2"].Points.Clear();
+            chartPie.Series["Series2"].LegendText = string.Empty;
+            chartPie.Annotations.Clear();
             try
             {
-
                 Database database = new Database();
                 database.OpenConnection();
-                string query = @"SELECT category, sum FROM ""Transactions"" WHERE id = @id";
+                string query = @"SELECT category, sum FROM ""Transactions"" WHERE id = @id AND date BETWEEN @startDate AND @endDate";
+
                 NpgsqlCommand cmd = new NpgsqlCommand(query, database.ConnectionString());
                 cmd.Parameters.AddWithValue("@id", Session.Id);
+                cmd.Parameters.AddWithValue("@startDate", startDate);
+                cmd.Parameters.AddWithValue("@endDate", endDate);
 
                 using (NpgsqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -247,7 +319,6 @@ namespace Course_project_HOME_ACCOUNTANCE
                         Alignment = ContentAlignment.MiddleCenter,
                         AnchorX = 29,
                         AnchorY = 54,
-
                     };
                     chartPie.Annotations.Add(annotation);
 
@@ -268,7 +339,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading chart data: {ex.Message}");
+                MessageBox.Show($"Ошибка загрузки пончиковой диаграммы: {ex.Message}");
             }
         }
 
@@ -437,20 +508,25 @@ namespace Course_project_HOME_ACCOUNTANCE
             public DateTime[] period { get; set; }
         }
 
-        private void LoadSum(int id)
+        private void LoadSum(DateTime startDate, DateTime endDate)
         {
             Database db = new Database();
-            string query = "SELECT COALESCE(SUM(sum), 0) FROM \"Incomes\" WHERE id = @id";
+            string query = "SELECT COALESCE(SUM(sum), 0) FROM \"Incomes\" WHERE id = @id AND date >= @startDate AND date <= @endDate";
 
-            Label totalsum = new Label();
-            totalsum.Name = "totalsum";
-            totalsum.Font = new Font("Microsoft Sans Serif", 16F);
-            totalsum.AutoSize = true;
-            totalsum.Text = "Общая сумма доходов: ";
+            // Проверяем, существует ли уже Label с именем "totalsum"
+            Label totalsum = this.Controls.Find("totalsum", true).FirstOrDefault() as Label;
 
-            totalsum.Location = new Point(140, this.ClientSize.Height - 50);
-
-            this.Controls.Add(totalsum);
+            if (totalsum == null)
+            {
+                // Если Label не существует, создаем новый
+                totalsum = new Label();
+                totalsum.Name = "totalsum";
+                totalsum.Font = new Font("Microsoft Sans Serif", 16F);
+                totalsum.AutoSize = true;
+                totalsum.Text = "Общая сумма доходов: ";
+                totalsum.Location = new Point(85, this.ClientSize.Height - 50);
+                this.Controls.Add(totalsum);
+            }
 
             using (NpgsqlConnection connection = new NpgsqlConnection(db.constring()))
             {
@@ -458,13 +534,15 @@ namespace Course_project_HOME_ACCOUNTANCE
                 {
                     try
                     {
-                        command.Parameters.AddWithValue("@id", id);
+                        command.Parameters.AddWithValue("@id", Session.Id);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
                         connection.Open();
                         object result = command.ExecuteScalar();
                         if (result != null && result != DBNull.Value)
                         {
                             decimal sum = Convert.ToDecimal(result);
-                            totalsum.Text = totalsum.Text + sum;
+                            totalsum.Text = "Общая сумма доходов: " + sum;
                         }
                         else
                         {
@@ -642,6 +720,20 @@ namespace Course_project_HOME_ACCOUNTANCE
                 MessageBox.Show($"Error fetching goals from database: {ex.Message}");
             }
             return goals;
+        }
+
+        private void Generate_Click(object sender, EventArgs e)
+        {
+            DateTime startDate = From.Value;
+            DateTime endDate = For.Value;
+            LoadChartData(startDate, endDate);
+        }
+
+        private void Calculate_Click(object sender, EventArgs e)
+        {
+            DateTime startDate = From1.Value;
+            DateTime endDate = For1.Value;
+            LoadSum( startDate, endDate);
         }
     }
 }
