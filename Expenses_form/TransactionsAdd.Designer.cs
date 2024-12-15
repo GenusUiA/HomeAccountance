@@ -180,8 +180,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CreateTransaction);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(794, 287);
+            this.MinimumSize = new System.Drawing.Size(794, 287);
             this.Name = "TransactionsAdd";
-            this.Text = "TransactionsAdd";
+            this.Text = "Добавление транзакций";
             this.ResumeLayout(false);
             this.PerformLayout();
 

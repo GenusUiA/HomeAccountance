@@ -18,6 +18,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
         {
             InitializeComponent();
             dateform.MaxDate = DateTime.Now;
+            dateform.Value = DateTime.Now;
         }
 
         private void Incomes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

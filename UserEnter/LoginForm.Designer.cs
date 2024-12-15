@@ -223,7 +223,8 @@
             this.MaximumSize = new System.Drawing.Size(664, 642);
             this.MinimumSize = new System.Drawing.Size(664, 642);
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.ShowIcon = false;
+            this.Text = "Регистрация";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureEye)).EndInit();

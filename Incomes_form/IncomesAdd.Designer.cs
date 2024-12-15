@@ -157,8 +157,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.AddIncome);
+            this.MaximumSize = new System.Drawing.Size(612, 278);
+            this.MinimumSize = new System.Drawing.Size(612, 278);
             this.Name = "IncomesAdd";
-            this.Text = "IncomesAdd";
+            this.Text = "Добавление доходов";
             this.ResumeLayout(false);
             this.PerformLayout();
 

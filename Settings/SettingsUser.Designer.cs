@@ -264,8 +264,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(513, 672);
+            this.MinimumSize = new System.Drawing.Size(513, 672);
             this.Name = "SettingsUser";
-            this.Text = "Settings";
+            this.Text = "Настройки";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -66,7 +66,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(646, 595);
+            this.panel2.Size = new System.Drawing.Size(627, 595);
             this.panel2.TabIndex = 3;
             // 
             // pictureBoxEye
@@ -85,7 +85,7 @@
             // 
             this.Closer.AutoSize = true;
             this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
-            this.Closer.Location = new System.Drawing.Point(606, 9);
+            this.Closer.Location = new System.Drawing.Point(592, 9);
             this.Closer.Name = "Closer";
             this.Closer.Size = new System.Drawing.Size(28, 30);
             this.Closer.TabIndex = 11;
@@ -200,11 +200,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 595);
+            this.ClientSize = new System.Drawing.Size(627, 595);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
+            this.MaximumSize = new System.Drawing.Size(645, 642);
+            this.MinimumSize = new System.Drawing.Size(645, 642);
             this.Name = "Autorization";
-            this.Text = "Autorization";
+            this.Text = "Авторизация";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).EndInit();

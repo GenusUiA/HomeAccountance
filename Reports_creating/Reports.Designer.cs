@@ -154,8 +154,10 @@
             this.Controls.Add(this.CreateReport);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(470, 314);
+            this.MinimumSize = new System.Drawing.Size(470, 314);
             this.Name = "Reports";
-            this.Text = "Reports";
+            this.Text = "Отчеты";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

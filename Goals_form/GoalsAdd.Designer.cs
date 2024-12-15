@@ -284,8 +284,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.AddGoal);
+            this.MaximumSize = new System.Drawing.Size(766, 453);
+            this.MinimumSize = new System.Drawing.Size(766, 453);
             this.Name = "Goals";
-            this.Text = "Goals";
+            this.Text = "Цели";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

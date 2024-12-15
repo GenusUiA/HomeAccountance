@@ -33,6 +33,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             string searchText = Searcher.Text;
             List<Income> incomes = income.searchCategory(searchText);
             IncomeBindingSource.DataSource = incomes;
+            Inc.DataSource = IncomeBindingSource;
         }
 
         private void Incomes_Load(object sender, System.EventArgs e)
@@ -53,24 +54,42 @@ namespace Course_project_HOME_ACCOUNTANCE
         {
             if (Inc.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = Inc.SelectedRows[0];
-                int IncomeId = Convert.ToInt32(row.Cells["income_id"].Value);
-                Income income = new Income(); 
+                Income income = new Income();
+                List<int> incomeIdsToDelete = new List<int>();
+
+                foreach (DataGridViewRow row in Inc.SelectedRows)
+                {
+                    int incomeId = Convert.ToInt32(row.Cells["income_id"].Value);
+                    incomeIdsToDelete.Add(incomeId);
+                }
+
                 try
                 {
-                    income.DeleteIncomeFromDatabase(IncomeId);
+                    foreach (int incomeId in incomeIdsToDelete)
+                    {
+                        income.DeleteIncomeFromDatabase(incomeId);
+                    }
+
                     List<Income> incomes = income.GetUserIncome();
                     Inc.DataSource = incomes;
-                    MessageBox.Show("Доход успешно удален.");
+
+                    if (incomeIdsToDelete.Count == 1)
+                    {
+                        MessageBox.Show("Доход успешно удален.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Доходы успешно удалены.");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка при удалении дохода: {ex.Message}");
+                    MessageBox.Show($"Ошибка при удалении доходов: {ex.Message}");
                 }
             }
             else
             {
-                MessageBox.Show("Пожалуйста, выберите доход для удаления.");
+                MessageBox.Show("Пожалуйста, выберите доходы для удаления.");
             }
         }
 

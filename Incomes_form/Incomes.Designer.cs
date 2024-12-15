@@ -156,7 +156,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Course_project_HOME_ACCOUNTANCE.Properties.Resources.Undo_Transparent_Background;
-            this.pictureBox1.Location = new System.Drawing.Point(33, 18);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(71, 52);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -214,8 +214,10 @@
             this.Controls.Add(this.Sorting);
             this.Controls.Add(this.addincome);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(760, 566);
+            this.MinimumSize = new System.Drawing.Size(760, 566);
             this.Name = "Incomes";
-            this.Text = "Incomes";
+            this.Text = "Доходы";
             this.Load += new System.EventHandler(this.Incomes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Inc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

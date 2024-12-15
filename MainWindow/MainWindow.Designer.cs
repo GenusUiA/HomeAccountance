@@ -30,9 +30,9 @@ namespace Course_project_HOME_ACCOUNTANCE
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Home = new System.Windows.Forms.PictureBox();
             this.Closer = new System.Windows.Forms.Label();
@@ -49,6 +49,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             this.For1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Home)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
@@ -90,27 +91,27 @@ namespace Course_project_HOME_ACCOUNTANCE
             // 
             this.chartPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.chartPie.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            chartArea2.InnerPlotPosition.Auto = false;
-            chartArea2.InnerPlotPosition.Height = 100F;
-            chartArea2.InnerPlotPosition.Width = 100F;
-            chartArea2.Name = "ChartArea1";
-            this.chartPie.ChartAreas.Add(chartArea2);
-            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            legend2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chartPie.Legends.Add(legend2);
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
+            chartArea1.InnerPlotPosition.Auto = false;
+            chartArea1.InnerPlotPosition.Height = 100F;
+            chartArea1.InnerPlotPosition.Width = 100F;
+            chartArea1.Name = "ChartArea1";
+            this.chartPie.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            legend1.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chartPie.Legends.Add(legend1);
             this.chartPie.Location = new System.Drawing.Point(374, 129);
             this.chartPie.MaximumSize = new System.Drawing.Size(652, 439);
             this.chartPie.MinimumSize = new System.Drawing.Size(652, 439);
             this.chartPie.Name = "chartPie";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Series2";
-            this.chartPie.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Series2";
+            this.chartPie.Series.Add(series1);
             this.chartPie.Size = new System.Drawing.Size(652, 439);
             this.chartPie.TabIndex = 13;
             this.chartPie.Text = "chart1";
@@ -119,7 +120,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             // 
             this.MainWind.AutoSize = true;
             this.MainWind.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.MainWind.Location = new System.Drawing.Point(412, 29);
+            this.MainWind.Location = new System.Drawing.Point(407, 12);
             this.MainWind.Name = "MainWind";
             this.MainWind.Size = new System.Drawing.Size(291, 46);
             this.MainWind.TabIndex = 14;
@@ -243,6 +244,16 @@ namespace Course_project_HOME_ACCOUNTANCE
             this.label5.TabIndex = 37;
             this.label5.Text = "С";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label6.Location = new System.Drawing.Point(239, 449);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 31);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "Доходы";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -250,6 +261,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1066, 627);
             this.ControlBox = false;
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.Calculate);
             this.Controls.Add(this.From1);
             this.Controls.Add(this.For1);
@@ -265,8 +277,10 @@ namespace Course_project_HOME_ACCOUNTANCE
             this.Controls.Add(this.Closer);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chartPie);
+            this.MaximumSize = new System.Drawing.Size(1084, 674);
+            this.MinimumSize = new System.Drawing.Size(1084, 674);
             this.Name = "MainWindow";
-            this.Text = "MainWindow";
+            this.Text = "Главное меню";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Home)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).EndInit();
@@ -292,5 +306,6 @@ namespace Course_project_HOME_ACCOUNTANCE
         private DateTimePicker For1;
         private Label label4;
         private Label label5;
+        private Label label6;
     }
 }

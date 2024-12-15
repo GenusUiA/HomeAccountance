@@ -317,7 +317,7 @@ namespace Course_project_HOME_ACCOUNTANCE
                         Font = new Font("Arial", 12, FontStyle.Bold),
                         ForeColor = Color.Black,
                         Alignment = ContentAlignment.MiddleCenter,
-                        AnchorX = 29,
+                        AnchorX = 31,
                         AnchorY = 54,
                     };
                     chartPie.Annotations.Add(annotation);
@@ -567,21 +567,21 @@ namespace Course_project_HOME_ACCOUNTANCE
             {
                 Panel welcomePanel = new Panel
                 {
-                    Width = this.ClientSize.Width - 150, 
-                    Height = this.ClientSize.Height - 100,
-                    Location = new Point(130, 50), 
+                    Width = this.ClientSize.Width - 140, 
+                    Height = this.ClientSize.Height - 70,
+                    Location = new Point(90, 55), 
                     BackColor = Color.FromArgb(169, 227, 243)
                 };
 
                 Label welcomeLabel = new Label
                 {
-                    Text = "Добро пожаловать в Home Accountance!\n\n" +
+                    Text = "Добро пожаловать в Домашнюю бухгалтерию!\n\n" +
                            "Чтобы начать пользоваться приложением:\n\n" +
-                           "1. Перейдите в раздел 'Incomes' и добавьте первые поступления\n" +
-                           "2. В разделе 'Expenses' внесите свои траты\n" +
-                           "3. Установите финансовые цели в разделе 'Goals'\n\n" +
+                           "1. Перейдите в раздел 'Доходы' и добавьте первые поступления\n" +
+                           "2. В разделе 'Расходы' внесите свои траты\n" +
+                           "3. Установите финансовые цели в разделе 'Цели'\n\n" +
                            "Это поможет вам эффективно управлять личными финансами",
-                    Font = new Font("Microsoft Sans Serif", 16F),
+                    Font = new Font("Microsoft Sans Serif", 18F),
                     AutoSize = false,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill
