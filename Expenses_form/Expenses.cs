@@ -143,8 +143,8 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
                         break;
                     case "Сумме":
                         transactions = (sortDirection == "ASC")
-                            ? transactions.OrderBy(t => ConvertToInt(t.sum)).ToList()
-                            : transactions.OrderByDescending(t => ConvertToInt(t.sum)).ToList();
+                            ? transactions.OrderBy(t => Convert.ToDecimal(t.sum)).ToList()
+                            : transactions.OrderByDescending(t => Convert.ToDecimal(t.sum)).ToList();
                         break;
                     case "Категории":
                         transactions = (sortDirection == "ASC")
@@ -166,18 +166,6 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при выполнении сортировки: " + ex.Message);
-            }
-        }
-
-        private int ConvertToInt(string sumString)
-        {
-            if (int.TryParse(sumString, out int result))
-            {
-                return result;
-            }
-            else
-            {
-                return 0;
             }
         }
 
@@ -240,7 +228,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
                 for (int row = 2; row <= rowCount; row++)
                 {
                     DateTime date;
-                    string sum;
+                    decimal sum = 0;
                     string category;
                     string place;
 
@@ -254,7 +242,15 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
                         Console.WriteLine($"Ошибка чтения даты в строке {row}");
                         continue;
                     }
-                    sum = sumValue?.ToString() ?? "0";
+                    if (sumValue != null && decimal.TryParse(sumValue.ToString(), out decimal parsedSum))
+                    {
+                        sum = parsedSum;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Ошибка чтения суммы в строке {row}");
+                        continue;
+                    }
                     category = categoryValue?.ToString() ?? "Не указана";
                     place = placeValue?.ToString() ?? "Не указано";
                     int userId = Session.Id;
@@ -277,7 +273,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
         }
 
 
-        private void SaveToDatabase(DateTime date, string sum, string category, string place, int id)
+        private void SaveToDatabase(DateTime date, decimal sum, string category, string place, int id)
         {
             string query = "INSERT INTO \"Transactions\" (date, sum, category, place, id) VALUES (@date, @sum, @category, @place, @id)";
             Database database = new Database();
@@ -287,12 +283,11 @@ namespace Course_project_HOME_ACCOUNTANCE.Expenses_functions
                 using (var command = new NpgsqlCommand(query, database.ConnectionString()))
                 {
                     command.Parameters.AddWithValue("@date", date);
-                    command.Parameters.AddWithValue("@sum", sum);
+                    command.Parameters.AddWithValue("@sum", sum); // sum теперь decimal
                     command.Parameters.AddWithValue("@category", category);
                     command.Parameters.AddWithValue("@place", place);
                     command.Parameters.AddWithValue("@id", id);
                     command.ExecuteNonQuery();
-
                 }
             }
             catch (Exception ex)

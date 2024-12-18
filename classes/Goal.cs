@@ -35,7 +35,6 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
                                 current_sum = reader.GetDecimal(1),
                                 sum = reader.GetDecimal(2),
                                 period = period,
-                                //isNotified = false
                             });
                         }
                     }
@@ -68,7 +67,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error fetching goal period from database: {ex.Message}");
+                MessageBox.Show($"Ошибка доставания цели из БД: {ex.Message}");
             }
             return period;
         }

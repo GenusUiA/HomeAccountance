@@ -13,7 +13,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
     {
         public int trans_id { get; set; }
         public DateTime date { get; set; }
-        public string sum { get; set; }
+        public decimal sum { get; set; }
         public string category { get; set; }
         public string place { get; set; }
 
@@ -33,7 +33,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
                     {
                         trans_id = reader.GetInt32(0),
                         date = reader.GetDateTime(1),
-                        sum = reader.GetString(2),
+                        sum = reader.GetDecimal(2),
                         category = reader.GetString(3),
                         place = reader.GetString(4),
                     };
@@ -95,7 +95,7 @@ namespace Course_project_HOME_ACCOUNTANCE.classes
                     Transaction trans = new Transaction
                     {
                         date = reader.GetDateTime(0),
-                        sum = reader.GetString(1),
+                        sum = reader.GetDecimal(1),
                         category = reader.GetString(2),
                         place = reader.GetString(3),
                     };

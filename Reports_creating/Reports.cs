@@ -81,7 +81,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
                             transactions.Add(new Transaction
                             {
                                 date = reader.GetDateTime(reader.GetOrdinal("date")),
-                                sum = reader.GetString(reader.GetOrdinal("sum")),
+                                sum = reader.GetDecimal(reader.GetOrdinal("sum")),
                                 category = reader.IsDBNull(reader.GetOrdinal("category")) ? "Не указана" : reader.GetString(reader.GetOrdinal("category")),
                                 place = reader.IsDBNull(reader.GetOrdinal("place")) ? "Не указано" : reader.GetString(reader.GetOrdinal("place"))
                             });
@@ -118,7 +118,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
                 foreach (var transaction in transactions)
                 {
                     worksheet.Cells[row, 1] = transaction.date.ToString("dd.MM.yyyy");
-                    worksheet.Cells[row, 2] = transaction.sum;
+                    worksheet.Cells[row, 2] = transaction.sum.ToString("F2"); 
                     worksheet.Cells[row, 3] = transaction.category;
                     worksheet.Cells[row, 4] = transaction.place;
                     row++;

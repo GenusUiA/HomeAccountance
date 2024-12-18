@@ -59,7 +59,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             }
         }
 
-        private void SaveToDatabase(DateTime date, string sum, string category, string place, int id)
+        private void SaveToDatabase(DateTime date, decimal sum, string category, string place, int id)
         {
             string query = "INSERT INTO \"Transactions\" (date, sum, category, place, id) VALUES (@date, @sum, @category, @place, @id)";
             Database database = new Database();
@@ -69,7 +69,7 @@ namespace Course_project_HOME_ACCOUNTANCE
                 using (var command = new NpgsqlCommand(query, database.ConnectionString()))
                 {
                     command.Parameters.AddWithValue("@date", date);
-                    command.Parameters.AddWithValue("@sum", sum);
+                    command.Parameters.AddWithValue("@sum", sum); 
                     command.Parameters.AddWithValue("@category", category);
                     command.Parameters.AddWithValue("@place", place);
                     command.Parameters.AddWithValue("@id", id);
@@ -89,13 +89,26 @@ namespace Course_project_HOME_ACCOUNTANCE
 
         private void CreateTransaction_Click(object sender, EventArgs e)
         {
-            string dateString = dateform.Text;
-            DateTime date;
-            DateTime.TryParse(dateString, out date);
-            string sum = sumform.Text;
-            string category = categoryform.Text;
-            string place = placeform.Text;
-            SaveToDatabase(date, sum, category, place, Session.Id);
+            DateTime date = dateform.Value;
+            string category = categoryform.Text.Trim(); 
+            string place = placeform.Text.Trim(); 
+
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                MessageBox.Show("Категория не может быть пустой!");
+            }
+            else if (string.IsNullOrWhiteSpace(place))
+            {
+                MessageBox.Show("Место не может быть пустым!");
+            }
+            else if (decimal.TryParse(sumform.Text, out decimal sum))
+            {
+                SaveToDatabase(date, sum, category, place, Session.Id);
+            }
+            else
+            {
+                MessageBox.Show("Сумма должна быть числом!");
+            }
         }
 
         private void Expenses_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

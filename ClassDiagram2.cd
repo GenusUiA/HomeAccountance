@@ -17,14 +17,14 @@
   <Class Name="Course_project_HOME_ACCOUNTANCE.Incomes" Collapsed="true">
     <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgBKAAAACAABBIAABCAAAASAAACAAAABAAAAKLggaA=</HashCode>
+      <HashCode>AAgBLAAAACAABBICABCAAAASBAACAAAABAAIAaLggaA=</HashCode>
       <FileName>Incomes_form\Incomes.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Course_project_HOME_ACCOUNTANCE.MainWindow" Collapsed="true">
     <Position X="7.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAhAABAZBSAwBBIAACCAIAASwAQiAKEAJAAAASGAAEA=</HashCode>
+      <HashCode>AhhgABAZBSAwBBIAAACAIAAS4CQiAKEAJAAAAWmAAUA=</HashCode>
       <FileName>MainWindow\MainWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,14 +59,14 @@
   <Class Name="Course_project_HOME_ACCOUNTANCE.classes.Income">
     <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABBAAAAAAAAACAAAACAAAAAAAEAAAAAAIAAAAAAA=</HashCode>
+      <HashCode>AAAABBAAAAAAAAACAAAACAAAAAAAEAAAAAAIAQAAAAA=</HashCode>
       <FileName>classes\Income.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Course_project_HOME_ACCOUNTANCE.classes.Transaction">
     <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABBAQAAAARAAAAAACAAAAAAAAQAAAAAAIAQAgAAA=</HashCode>
+      <HashCode>AAAABBAQAAAARAAAAAACAAAAAAAAQAAAAAAIAQAAAAA=</HashCode>
       <FileName>classes\Transaction.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,21 +87,21 @@
   <Class Name="Course_project_HOME_ACCOUNTANCE.Expenses_functions.Expenses" Collapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAiBKAAAACAABBAAABCABBgSAAACgAoABAAKAALggYA=</HashCode>
+      <HashCode>AAiBLAAAACAABBAAABCABBgSBAACwAoABAAKAQLggYA=</HashCode>
       <FileName>Expenses_form\Expenses.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Course_project_HOME_ACCOUNTANCE.Goals_form.Goals" Collapsed="true">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAlgIAIAACAACBAAAACgCAACIEgiAAAAAAAAgCHAAIg=</HashCode>
+      <HashCode>IBlgIAIAACAACBAAAACgCAACIEgiAAAAAAAAgCHAAIg=</HashCode>
       <FileName>Goals_form\GoalsAdd.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Course_project_HOME_ACCOUNTANCE.Incomes_form.IncomesAdd" Collapsed="true">
     <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAACAAABAEABCAAAACAAACQAAABCAIACCAAIA=</HashCode>
+      <HashCode>AAEAAAAAACAAABAEABCAAAACAIACQAAABCAIACCAAIA=</HashCode>
       <FileName>Incomes_form\IncomesAdd.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -134,7 +134,7 @@
   <Class Name="Course_project_HOME_ACCOUNTANCE.Settings.SettingsUser" Collapsed="true">
     <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgIAAAQCAEABAQAACCBQACAACCBAgAAAAAAgBAEAA=</HashCode>
+      <HashCode>AAAgIAAAQCAEABAQAACCBQACAACCBAgAAAAAAiDAEIA=</HashCode>
       <FileName>Settings\SettingsUser.cs</FileName>
     </TypeIdentifier>
   </Class>

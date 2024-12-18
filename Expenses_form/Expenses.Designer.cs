@@ -34,17 +34,17 @@
             this.Sorting = new System.Windows.Forms.Button();
             this.Remove = new System.Windows.Forms.Button();
             this.Transactions = new System.Windows.Forms.DataGridView();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.place = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trans_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.Button();
             this.Searcher = new System.Windows.Forms.TextBox();
             this.Closer = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sorting_form = new System.Windows.Forms.ComboBox();
             this.LoadTr = new System.Windows.Forms.Button();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.place = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trans_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Transactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             this.AddIncome.Name = "AddIncome";
             this.AddIncome.Size = new System.Drawing.Size(229, 33);
             this.AddIncome.TabIndex = 3;
-            this.AddIncome.Text = "Добавить транзакцию";
+            this.AddIncome.Text = "Добавить покупку";
             this.AddIncome.UseVisualStyleBackColor = false;
             this.AddIncome.Click += new System.EventHandler(this.AddIncome_Click);
             // 
@@ -91,7 +91,7 @@
             this.Remove.Name = "Remove";
             this.Remove.Size = new System.Drawing.Size(238, 33);
             this.Remove.TabIndex = 5;
-            this.Remove.Text = "Удалить транзакцию";
+            this.Remove.Text = "Удалить покупку";
             this.Remove.UseVisualStyleBackColor = false;
             this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
@@ -121,6 +121,47 @@
             this.Transactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Transactions.Size = new System.Drawing.Size(726, 275);
             this.Transactions.TabIndex = 6;
+            // 
+            // date
+            // 
+            this.date.DataPropertyName = "date";
+            this.date.HeaderText = "Дата";
+            this.date.MinimumWidth = 6;
+            this.date.Name = "date";
+            this.date.Width = 125;
+            // 
+            // sum
+            // 
+            this.sum.DataPropertyName = "sum";
+            this.sum.HeaderText = "Сумма";
+            this.sum.MinimumWidth = 6;
+            this.sum.Name = "sum";
+            this.sum.Width = 125;
+            // 
+            // category
+            // 
+            this.category.DataPropertyName = "category";
+            this.category.HeaderText = "Категория";
+            this.category.MinimumWidth = 6;
+            this.category.Name = "category";
+            this.category.Width = 125;
+            // 
+            // place
+            // 
+            this.place.DataPropertyName = "place";
+            this.place.HeaderText = "Место";
+            this.place.MinimumWidth = 6;
+            this.place.Name = "place";
+            this.place.Width = 125;
+            // 
+            // trans_id
+            // 
+            this.trans_id.DataPropertyName = "trans_id";
+            this.trans_id.HeaderText = "trans_id";
+            this.trans_id.MinimumWidth = 6;
+            this.trans_id.Name = "trans_id";
+            this.trans_id.Visible = false;
+            this.trans_id.Width = 125;
             // 
             // Search
             // 
@@ -185,50 +226,9 @@
             this.LoadTr.Name = "LoadTr";
             this.LoadTr.Size = new System.Drawing.Size(226, 33);
             this.LoadTr.TabIndex = 16;
-            this.LoadTr.Text = "Загрузить транзакции";
+            this.LoadTr.Text = "Загрузить расходы";
             this.LoadTr.UseVisualStyleBackColor = false;
             this.LoadTr.Click += new System.EventHandler(this.LoadTr_Click);
-            // 
-            // date
-            // 
-            this.date.DataPropertyName = "date";
-            this.date.HeaderText = "Дата";
-            this.date.MinimumWidth = 6;
-            this.date.Name = "date";
-            this.date.Width = 125;
-            // 
-            // sum
-            // 
-            this.sum.DataPropertyName = "sum";
-            this.sum.HeaderText = "Сумма";
-            this.sum.MinimumWidth = 6;
-            this.sum.Name = "sum";
-            this.sum.Width = 125;
-            // 
-            // category
-            // 
-            this.category.DataPropertyName = "category";
-            this.category.HeaderText = "Категория";
-            this.category.MinimumWidth = 6;
-            this.category.Name = "category";
-            this.category.Width = 125;
-            // 
-            // place
-            // 
-            this.place.DataPropertyName = "place";
-            this.place.HeaderText = "Место";
-            this.place.MinimumWidth = 6;
-            this.place.Name = "place";
-            this.place.Width = 125;
-            // 
-            // trans_id
-            // 
-            this.trans_id.DataPropertyName = "trans_id";
-            this.trans_id.HeaderText = "trans_id";
-            this.trans_id.MinimumWidth = 6;
-            this.trans_id.Name = "trans_id";
-            this.trans_id.Visible = false;
-            this.trans_id.Width = 125;
             // 
             // Expenses
             // 

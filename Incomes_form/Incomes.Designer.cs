@@ -34,14 +34,14 @@
             this.Searcher = new System.Windows.Forms.TextBox();
             this.Search = new System.Windows.Forms.Button();
             this.Inc = new System.Windows.Forms.DataGridView();
-            this.removeincome = new System.Windows.Forms.Button();
-            this.Sorting = new System.Windows.Forms.Button();
-            this.addincome = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.income_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.removeincome = new System.Windows.Forms.Button();
+            this.Sorting = new System.Windows.Forms.Button();
+            this.addincome = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Inc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -86,6 +86,7 @@
             this.Searcher.Name = "Searcher";
             this.Searcher.Size = new System.Drawing.Size(148, 29);
             this.Searcher.TabIndex = 22;
+            this.Searcher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Searcher_KeyPress);
             // 
             // Search
             // 
@@ -116,6 +117,39 @@
             this.Inc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Inc.Size = new System.Drawing.Size(539, 284);
             this.Inc.TabIndex = 20;
+            // 
+            // sum
+            // 
+            this.sum.DataPropertyName = "sum";
+            this.sum.HeaderText = "Сумма";
+            this.sum.MinimumWidth = 6;
+            this.sum.Name = "sum";
+            this.sum.Width = 125;
+            // 
+            // category
+            // 
+            this.category.DataPropertyName = "category";
+            this.category.HeaderText = "Категория";
+            this.category.MinimumWidth = 6;
+            this.category.Name = "category";
+            this.category.Width = 125;
+            // 
+            // date
+            // 
+            this.date.DataPropertyName = "date";
+            this.date.HeaderText = "Дата";
+            this.date.MinimumWidth = 6;
+            this.date.Name = "date";
+            this.date.Width = 125;
+            // 
+            // income_id
+            // 
+            this.income_id.DataPropertyName = "income_id";
+            this.income_id.HeaderText = "income_id";
+            this.income_id.MinimumWidth = 6;
+            this.income_id.Name = "income_id";
+            this.income_id.Visible = false;
+            this.income_id.Width = 125;
             // 
             // removeincome
             // 
@@ -163,39 +197,6 @@
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // sum
-            // 
-            this.sum.DataPropertyName = "sum";
-            this.sum.HeaderText = "Сумма";
-            this.sum.MinimumWidth = 6;
-            this.sum.Name = "sum";
-            this.sum.Width = 125;
-            // 
-            // category
-            // 
-            this.category.DataPropertyName = "category";
-            this.category.HeaderText = "Категория";
-            this.category.MinimumWidth = 6;
-            this.category.Name = "category";
-            this.category.Width = 125;
-            // 
-            // date
-            // 
-            this.date.DataPropertyName = "date";
-            this.date.HeaderText = "Дата";
-            this.date.MinimumWidth = 6;
-            this.date.Name = "date";
-            this.date.Width = 125;
-            // 
-            // income_id
-            // 
-            this.income_id.DataPropertyName = "income_id";
-            this.income_id.HeaderText = "income_id";
-            this.income_id.MinimumWidth = 6;
-            this.income_id.Name = "income_id";
-            this.income_id.Visible = false;
-            this.income_id.Width = 125;
             // 
             // Incomes
             // 

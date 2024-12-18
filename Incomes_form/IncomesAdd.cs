@@ -28,7 +28,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
             incomes.Show();
         }
 
-        void SaveToDatabase(int sum, string category, int id, DateTime date)
+        void SaveToDatabase(decimal sum, string category, int id, DateTime date)
         {
             string query = "INSERT INTO \"Incomes\" (sum, category, id, date) VALUES (@sum, @category, @id, @date)";
             Database database = new Database();
@@ -57,14 +57,20 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
 
         private void AddIncome_Click(object sender, EventArgs e)
         {
-            string summa = sumform.Text;
-            int sum;
-            int.TryParse(summa, out sum);
-            string category = categoryform.Text;
-            string dateString = dateform.Text;
-            DateTime date;
-            DateTime.TryParse(dateString, out date);
-            SaveToDatabase(sum, category, Session.Id, date);
+            string category = categoryform.Text.Trim();
+            DateTime date = dateform.Value;
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                MessageBox.Show("Категория не может быть пустой!");
+            }
+            else if (decimal.TryParse(sumform.Text, out decimal sum))
+            {
+                SaveToDatabase(sum, category, Session.Id, date);
+            }
+            else
+            {
+                MessageBox.Show("Сумма должна быть числом!");
+            }
         }
 
         private void Closer_Click(object sender, EventArgs e)

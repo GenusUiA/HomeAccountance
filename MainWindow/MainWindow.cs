@@ -108,6 +108,120 @@ namespace Course_project_HOME_ACCOUNTANCE
             }
         }
 
+        public class ColorProgressBar : System.Windows.Forms.Control
+        {
+            private int value;
+            private int maxValue;
+            private int minValue;
+            private int old;
+            private int current;
+            private Color prColor;
+            private System.Windows.Forms.Timer timer;
+
+            public ColorProgressBar()
+            {
+                prColor = Color.Red;
+                maxValue = 100;
+                minValue = 0;
+                SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
+                Width = 100;
+                Height = 23;
+                timer = new System.Windows.Forms.Timer();
+                timer.Interval = 10; // Увеличил интервал таймера
+                timer.Tick += timer_Tick;
+                timer.Enabled = true;
+            }
+
+            void timer_Tick(object sender, EventArgs e)
+            {
+                if (current != old)
+                {
+                    int direction = Math.Sign(current - old);
+                    old += direction;
+                    this.value = old;
+                    Invalidate();
+                }
+            }
+
+            protected override void OnPaint(PaintEventArgs e)
+            {
+                // 1. Заливка фона как у обычного прогресс-бара
+                using (SolidBrush backBrush = new SolidBrush(Color.FromArgb(230, 231, 235)))
+                {
+                    e.Graphics.FillRectangle(backBrush, 0, 0, Width, Height);
+                }
+
+                // 2. Отрисовка границы
+                e.Graphics.DrawRectangle(Pens.Silver, 0, 0, Width - 1, Height - 1);
+
+                // 3. Отрисовка прогресс-бара
+                int length = Width * value / maxValue;
+                using (SolidBrush brush = new SolidBrush(prColor))
+                    e.Graphics.FillRectangle(brush, 1, 1, length - 2, Height - 2);
+
+                // 4. Отрисовка текста (если нужно)
+                Size textSize = TextRenderer.MeasureText(value + "", this.Font);
+                int x = (Width - textSize.Width) / 2;
+                int y = (Height - textSize.Height) / 2;
+
+                base.OnPaint(e);
+            }
+
+            public int Value
+            {
+                get
+                {
+                    return current;
+                }
+                set
+                {
+                    old = this.value; // Сохраняем предыдущее значение
+                    if (value > maxValue)
+                        value = maxValue;
+                    if (value < minValue)
+                        value = minValue;
+                    current = value;
+
+                }
+            }
+            public int MaxValue
+            {
+                get
+                {
+                    return maxValue;
+                }
+                set
+                {
+                    maxValue = value;
+                    Invalidate();
+                }
+            }
+            public int MinValue
+            {
+                get
+                {
+                    return minValue;
+                }
+                set
+                {
+                    minValue = value;
+                    Invalidate();
+                }
+            }
+            public Color ProgressColor
+            {
+                get
+                {
+                    return prColor;
+                }
+                set
+                {
+                    prColor = value;
+                    Invalidate();
+                }
+            }
+        }
+
 
         private void CreateMenuPanel()               //создание кнопок и панелек меню
         {
@@ -285,7 +399,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             };
 
                     double totalSum = 0;
-
+                    bool dataExists = false;
                     while (reader.Read())
                     {
                         string category = reader["category"].ToString();
@@ -295,6 +409,7 @@ namespace Course_project_HOME_ACCOUNTANCE
                             categorySums[group] += amount;
                         else
                             categorySums[group] = amount;
+                        dataExists = true;
                     }
                     reader.Close();
 
@@ -311,16 +426,20 @@ namespace Course_project_HOME_ACCOUNTANCE
 
                     ChartArea chartArea = chartPie.ChartAreas[0];
 
-                    TextAnnotation annotation = new TextAnnotation
+                    if (dataExists)
                     {
-                        Text = $"{totalSum}",
-                        Font = new Font("Arial", 12, FontStyle.Bold),
-                        ForeColor = Color.Black,
-                        Alignment = ContentAlignment.MiddleCenter,
-                        AnchorX = 31,
-                        AnchorY = 54,
-                    };
-                    chartPie.Annotations.Add(annotation);
+                        TextAnnotation annotation = new TextAnnotation
+                        {
+                            Text = $"{totalSum}",
+                            Font = new Font("Arial", 12, FontStyle.Bold),
+                            ForeColor = Color.Black,
+                            Alignment = ContentAlignment.MiddleCenter,
+                            AnchorX = 28,
+                            AnchorY = 54,
+                        };
+
+                        chartPie.Annotations.Add(annotation);
+                    }
 
                     chartPie.Legends[0].Docking = Docking.Right;
                     chartPie.Legends[0].Alignment = StringAlignment.Center;
@@ -406,13 +525,9 @@ namespace Course_project_HOME_ACCOUNTANCE
             goalProgress.Add(Tuple.Create(progressBar, goalLabel));
 
             // Прогресс-бар для времени
-            ProgressBar dateBar = new ProgressBar();
+            ColorProgressBar dateBar = new ColorProgressBar();
             dateBar.Width = 75;
-            dateBar.Minimum = 0;
-            dateBar.Maximum = 100;
-            dateBar.Step = 1;
             dateBar.Location = new Point(100, yOffset+10);
-
             DateTime currentDate = DateTime.Now;
             DateTime startDate = period[0];
             DateTime endDate = period[1];
@@ -562,14 +677,14 @@ namespace Course_project_HOME_ACCOUNTANCE
         {
             bool hasTransactions = CheckUserHasTransactions();
             bool hasGoals = CheckUserHasGoals();
-
-            if (!hasTransactions && !hasGoals)
+            bool hasIncomes = CheckUserHasIncomes();
+            if (!hasTransactions && !hasGoals && !hasIncomes)
             {
                 Panel welcomePanel = new Panel
                 {
-                    Width = this.ClientSize.Width - 140, 
+                    Width = this.ClientSize.Width - 140,
                     Height = this.ClientSize.Height - 70,
-                    Location = new Point(90, 55), 
+                    Location = new Point(90, 55),
                     BackColor = Color.FromArgb(169, 227, 243)
                 };
 
@@ -592,6 +707,38 @@ namespace Course_project_HOME_ACCOUNTANCE
                 this.Controls.Add(welcomePanel);
                 welcomePanel.BringToFront();
             }
+            else if (!hasTransactions)
+            {
+                exp.Visible = true;
+            }
+            if (!hasGoals)
+            {
+                goal.Visible = true;
+            }
+
+        }
+
+            private bool CheckUserHasIncomes()
+        {
+            try
+            {
+                using (var connection = new NpgsqlConnection(Database.connectionString))
+                {
+                    connection.Open();
+                    using (var command = new NpgsqlCommand(
+                        "SELECT COUNT(*) FROM \"Incomes\" WHERE id = @id", connection))
+                    {
+                        command.Parameters.AddWithValue("@id", Session.Id);
+                        long count = Convert.ToInt64(command.ExecuteScalar());
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка проверки доходов: {ex.Message}");
+                return false;
+            }
         }
 
         private bool CheckUserHasTransactions()
@@ -612,7 +759,7 @@ namespace Course_project_HOME_ACCOUNTANCE
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка проверки транзакций: {ex.Message}");
+                MessageBox.Show($"Ошибка проверки расходов: {ex.Message}");
                 return false;
             }
         }

@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Closer = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.PictureEye = new System.Windows.Forms.PictureBox();
             this.pictureBoxEye = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.Closer = new System.Windows.Forms.Label();
             this.ConfirmPasswordField = new System.Windows.Forms.TextBox();
             this.ButtonRegister = new System.Windows.Forms.Button();
             this.PasswordField = new System.Windows.Forms.TextBox();
             this.LoginField = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureEye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).BeginInit();
@@ -73,6 +73,39 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(646, 595);
             this.panel2.TabIndex = 2;
+            // 
+            // Closer
+            // 
+            this.Closer.AutoSize = true;
+            this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
+            this.Closer.Location = new System.Drawing.Point(609, 9);
+            this.Closer.Name = "Closer";
+            this.Closer.Size = new System.Drawing.Size(28, 30);
+            this.Closer.TabIndex = 9;
+            this.Closer.Text = "X";
+            this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
+            this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
+            this.label2.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(227, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(270, 55);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Регистрация";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
+            this.label1.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(131, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(531, 62);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Домашняя бухгалтерия";
             // 
             // PictureEye
             // 
@@ -119,18 +152,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
-            // 
-            // Closer
-            // 
-            this.Closer.AutoSize = true;
-            this.Closer.Font = new System.Drawing.Font("Microsoft YaHei", 12.8F, System.Drawing.FontStyle.Bold);
-            this.Closer.Location = new System.Drawing.Point(609, 9);
-            this.Closer.Name = "Closer";
-            this.Closer.Size = new System.Drawing.Size(28, 30);
-            this.Closer.TabIndex = 9;
-            this.Closer.Text = "X";
-            this.Closer.MouseEnter += new System.EventHandler(this.Closer_MouseEnter);
-            this.Closer.MouseLeave += new System.EventHandler(this.Closer_MouseLeave_1);
             // 
             // ConfirmPasswordField
             // 
@@ -192,27 +213,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.label1.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(131, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(531, 62);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Домашняя бухгалтерия";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(227)))), ((int)(((byte)(243)))));
-            this.label2.Font = new System.Drawing.Font("Sylfaen", 25.2F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(227, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(270, 55);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Регистрация";
             // 
             // LoginForm
             // 

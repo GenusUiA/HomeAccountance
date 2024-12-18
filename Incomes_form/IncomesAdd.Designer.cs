@@ -124,7 +124,7 @@
             // 
             this.dateform.AllowDrop = true;
             this.dateform.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateform.Location = new System.Drawing.Point(430, 135);
+            this.dateform.Location = new System.Drawing.Point(430, 133);
             this.dateform.MaxDate = new System.DateTime(2024, 11, 22, 0, 0, 0, 0);
             this.dateform.Name = "dateform";
             this.dateform.Size = new System.Drawing.Size(134, 22);

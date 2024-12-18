@@ -164,5 +164,14 @@ namespace Course_project_HOME_ACCOUNTANCE
                 MessageBox.Show("Ошибка при выполнении сортировки: " + ex.Message);
             }
         }
+
+        private void Searcher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                Search.PerformClick();
+                e.Handled = true;
+            }
+        }
     }
 }

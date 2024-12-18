@@ -1,4 +1,5 @@
 ﻿using Course_project_HOME_ACCOUNTANCE.classes;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
 using DocumentFormat.OpenXml.Wordprocessing;
 using iText.Layout.Element;
 using Npgsql;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
@@ -59,11 +61,75 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
 
         private void AddGoal_Click(object sender, EventArgs e)
         {
+            int maxGoals = 6;
+            int currentGoalCount = GetCurrentGoalCountFromDatabase(Session.Id);
+
+            if (currentGoalCount >= maxGoals)
+            {
+                MessageBox.Show($"Вы достигли максимального количества целей ({maxGoals}).");
+                return;
+            }
+
             Goal goal = new Goal();
-            goal.definition = defform.Text;
-            goal.sum = decimal.Parse(sumform.Text); 
+            goal.definition = defform.Text.Trim();
             goal.period = new DateTime[] { from.Value, For.Value };
-            SaveGoalToDatabase(goal.definition, goal.sum, goal.period, Session.Id);
+
+
+            if (string.IsNullOrWhiteSpace(goal.definition))
+            {
+                MessageBox.Show("Название не может быть пустым!");
+            }
+            else if (IsGoalDuplicate(goal.definition, Session.Id))
+            {
+                MessageBox.Show("Цель с таким названием уже существует. Пожалуйста, выберите другое название.");
+            }
+            else if (decimal.TryParse(sumform.Text, out decimal sum))
+            {
+                SaveGoalToDatabase(goal.definition, sum, goal.period, Session.Id);
+            }
+            else
+            {
+                MessageBox.Show("Сумма должна быть числом!");
+            }
+        }
+
+        private bool IsGoalDuplicate(string definition, int id)
+        {
+            // Здесь нужно реализовать логику запроса к вашей базе данных
+            // для проверки, существует ли уже цель с таким названием для данного пользователя.
+            bool isDuplicate = false;
+
+            Database db = new Database();
+            using (var connection = db.ConnectionString())
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM \"Goals\" WHERE id = @id AND definition = @definition";
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", id);
+                    command.Parameters.AddWithValue("@definition", definition);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    isDuplicate = count > 0;
+                }
+            }
+            return isDuplicate;
+        }
+
+        private int GetCurrentGoalCountFromDatabase(int id)
+        {
+            int count = 0;
+            Database db = new Database();
+            using (var connection = db.ConnectionString()) 
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM \"Goals\" WHERE id = @id"; 
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    count = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+            return count;
         }
 
         private void Closer_Click(object sender, EventArgs e)
@@ -143,7 +209,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
                     }
                     else
                     {
-                        MessageBox.Show("Цель не найдена или произошла ошибка при удалении.");
+                        MessageBox.Show("Цель не найдена.");
                     }
                 }
             }
@@ -160,16 +226,33 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
         private void DelGoal_Click(object sender, EventArgs e)
         {
             Goal goal = new Goal();
-            goal.definition = deldef.Text;
-            DeleteGoalFromDatabase(goal.definition, Session.Id);
+            goal.definition = deldef.Text.Trim();
+            if (string.IsNullOrWhiteSpace(goal.definition))
+            {
+                MessageBox.Show("Название не может быть пустым!");
+            }
+            else
+            {
+                DeleteGoalFromDatabase(goal.definition, Session.Id);
+            }
         }
 
         private void SumAdd_Click(object sender, EventArgs e)
         {
             Goal goal = new Goal();
-            goal.definition = sumdef.Text;
-            goal.current_sum = decimal.Parse(addsum.Text);
-            UpdateGoalSumByDef(goal.definition, goal.current_sum, Session.Id);
+            goal.definition = sumdef.Text.Trim();
+            if (string.IsNullOrWhiteSpace(goal.definition))
+            {
+                MessageBox.Show("Название не может быть пустым!");
+            }
+            else if (decimal.TryParse(addsum.Text, out decimal sum))
+            {
+                UpdateGoalSumByDef(goal.definition, sum, Session.Id);
+            }
+            else
+            {
+                MessageBox.Show("Сумма должна быть числом!");
+            }
         }
 
         private void Main_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -184,6 +267,11 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             this.Hide();
             MainWindow window = new MainWindow();
             window.Show();
+        }
+
+        private void Goals_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

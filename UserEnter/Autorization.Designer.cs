@@ -101,7 +101,7 @@
             this.LinkLabelRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LinkLabelRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.LinkLabelRegister.LinkColor = System.Drawing.Color.Black;
-            this.LinkLabelRegister.Location = new System.Drawing.Point(338, 520);
+            this.LinkLabelRegister.Location = new System.Drawing.Point(305, 521);
             this.LinkLabelRegister.Name = "LinkLabelRegister";
             this.LinkLabelRegister.Size = new System.Drawing.Size(175, 20);
             this.LinkLabelRegister.TabIndex = 9;
@@ -112,7 +112,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(192, 520);
+            this.label3.Location = new System.Drawing.Point(176, 521);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 20);
             this.label3.TabIndex = 10;

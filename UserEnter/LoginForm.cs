@@ -56,16 +56,16 @@ namespace Course_project_HOME_ACCOUNTANCE
                         int result = command.ExecuteNonQuery();
                         if (result > 0)
                         {
-                            MessageBox.Show("Registration pass correct");
+                            MessageBox.Show("Регистрация прошла успешно");
                         }
                         else
                         {
-                            MessageBox.Show("An error occurred while saving the data.");
+                            MessageBox.Show("Ошибка сохранения в бд");
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error: {ex.Message}");
+                        MessageBox.Show($"Ошибка: {ex.Message}");
                     }
                 }
             }

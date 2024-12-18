@@ -156,14 +156,18 @@ namespace Course_project_HOME_ACCOUNTANCE.Settings
             string password = oldpass.Text;
             string confirmPassword = newpass.Text;
 
+            string newpassword = newpass.Text;
+            string reppassword = reppass.Text;
+            if (password == "" || newpassword == "" || reppassword == "")
+            {
+                MessageBox.Show("Пароль не введен");
+                return;
+            }
             if (password == confirmPassword)
             {
                 MessageBox.Show("Пароли совпадают");
                 return;
             }
-
-            string newpassword = newpass.Text;
-            string reppassword = reppass.Text;
             if (newpassword != reppassword)
             {
                 MessageBox.Show("Пароли не совпадают");
