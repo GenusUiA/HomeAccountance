@@ -26,9 +26,6 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             InitializeComponent();
             from.MaxDate = DateTime.Now;
             from.MinDate = DateTime.Now;
-            from.Value = DateTime.Now;
-
-            For.Value = DateTime.Now;
             For.MinDate = from.Value;
         }
 
@@ -79,6 +76,10 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             {
                 MessageBox.Show("Название не может быть пустым!");
             }
+            else if (goal.definition.Length > 16)
+            {
+                MessageBox.Show("Название цели не может быть больше 16 символов!");
+            }
             else if (IsGoalDuplicate(goal.definition, Session.Id))
             {
                 MessageBox.Show("Цель с таким названием уже существует. Пожалуйста, выберите другое название.");
@@ -86,6 +87,9 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             else if (decimal.TryParse(sumform.Text, out decimal sum))
             {
                 SaveGoalToDatabase(goal.definition, sum, goal.period, Session.Id);
+                defform.Text = string.Empty; 
+                For.Value = DateTime.Now;
+                sumform.Text = string.Empty; 
             }
             else
             {
@@ -95,8 +99,6 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
 
         private bool IsGoalDuplicate(string definition, int id)
         {
-            // Здесь нужно реализовать логику запроса к вашей базе данных
-            // для проверки, существует ли уже цель с таким названием для данного пользователя.
             bool isDuplicate = false;
 
             Database db = new Database();
@@ -106,7 +108,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
                 string query = "SELECT COUNT(*) FROM \"Goals\" WHERE id = @id AND definition = @definition";
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserId", id);
+                    command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@definition", definition);
                     int count = Convert.ToInt32(command.ExecuteScalar());
                     isDuplicate = count > 0;
@@ -234,6 +236,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             else
             {
                 DeleteGoalFromDatabase(goal.definition, Session.Id);
+                deldef.Text = string.Empty;
             }
         }
 
@@ -248,6 +251,8 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             else if (decimal.TryParse(addsum.Text, out decimal sum))
             {
                 UpdateGoalSumByDef(goal.definition, sum, Session.Id);
+                sumdef.Text = string.Empty;
+                addsum.Text = string.Empty;
             }
             else
             {
@@ -267,11 +272,6 @@ namespace Course_project_HOME_ACCOUNTANCE.Goals_form
             this.Hide();
             MainWindow window = new MainWindow();
             window.Show();
-        }
-
-        private void Goals_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

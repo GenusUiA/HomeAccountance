@@ -288,7 +288,6 @@
             this.MinimumSize = new System.Drawing.Size(766, 453);
             this.Name = "Goals";
             this.Text = "Цели";
-            this.Load += new System.EventHandler(this.Goals_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

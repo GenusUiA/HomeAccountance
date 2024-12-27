@@ -18,7 +18,7 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
         {
             InitializeComponent();
             dateform.MaxDate = DateTime.Now;
-            dateform.Value = DateTime.Now;
+            dateform.Value = DateTime.Now.AddDays(-1);
         }
 
         private void Incomes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -66,6 +66,9 @@ namespace Course_project_HOME_ACCOUNTANCE.Incomes_form
             else if (decimal.TryParse(sumform.Text, out decimal sum))
             {
                 SaveToDatabase(sum, category, Session.Id, date);
+                categoryform.Text = string.Empty; 
+                dateform.Value = DateTime.Today;  
+                sumform.Text = string.Empty;
             }
             else
             {

@@ -45,67 +45,10 @@ namespace Course_project_HOME_ACCOUNTANCE
             {
                 CheckGoalStatus();
             }
-
             From.MaxDate = DateTime.Now;
-            For.MaxDate = DateTime.Now; 
-            From.Value = DateTime.Now;  
-            For.Value = DateTime.Now; 
-
-            // Привязка обработчиков событий
-            From.ValueChanged += From_ValueChanged;
-            For.ValueChanged += For_ValueChanged;
-
+            For.MaxDate = DateTime.Now;
             From1.MaxDate = DateTime.Now;
             For1.MaxDate = DateTime.Now;
-            From1.Value = DateTime.Now;
-            For1.Value = DateTime.Now;
-
-            // Привязка обработчиков событий
-            From1.ValueChanged += From1_ValueChanged;
-            For1.ValueChanged += For1_ValueChanged;
-            void From_ValueChanged(object sender, EventArgs e)
-            {
-                // Проверка: начальная дата не должна быть больше конечной
-                if (From.Value > For.Value)
-                {
-                    // Если начальная дата больше конечной, то конечная приравнивается к начальной
-                    For.Value = From.Value;
-                }
-                For.MinDate = From.Value;
-            }
-
-            void For_ValueChanged(object sender, EventArgs e)
-            {
-                // Проверка: Конечная дата не должна быть меньше начальной
-                if (For.Value < From.Value)
-                {
-                    // Если конечная дата меньше начальной, то начальная приравнивается к конечной
-                    From.Value = For.Value;
-                }
-
-            }
-
-            void From1_ValueChanged(object sender, EventArgs e)
-            {
-                // Проверка: начальная дата не должна быть больше конечной
-                if (From1.Value > For1.Value)
-                {
-                    // Если начальная дата больше конечной, то конечная приравнивается к начальной
-                    For1.Value = From1.Value;
-                }
-                For1.MinDate = From1.Value;
-            }
-
-            void For1_ValueChanged(object sender, EventArgs e)
-            {
-                // Проверка: Конечная дата не должна быть меньше начальной
-                if (For1.Value < From1.Value)
-                {
-                    // Если конечная дата меньше начальной, то начальная приравнивается к конечной
-                    From1.Value = For1.Value;
-                }
-
-            }
         }
 
         public class ColorProgressBar : System.Windows.Forms.Control
@@ -434,7 +377,7 @@ namespace Course_project_HOME_ACCOUNTANCE
                             Font = new Font("Arial", 12, FontStyle.Bold),
                             ForeColor = Color.Black,
                             Alignment = ContentAlignment.MiddleCenter,
-                            AnchorX = 28,
+                            AnchorX = 31,
                             AnchorY = 54,
                         };
 
@@ -445,6 +388,7 @@ namespace Course_project_HOME_ACCOUNTANCE
                     chartPie.Legends[0].Alignment = StringAlignment.Center;
                     chartPie.Legends[0].IsTextAutoFit = true;
                     chartPie.Legends[0].BackColor = Color.Ivory;
+
                     foreach (var seriesPoint in chartPie.Series["Series2"].Points)
                     {
                         string categoryName = seriesPoint.AxisLabel;
@@ -475,7 +419,7 @@ namespace Course_project_HOME_ACCOUNTANCE
                 case "Бытовая техника":
                     return "быт и дом";
                 case "Питание":
-                case "Прочие":
+                case "Одежда":
                     return "Питание";
                 case "Транспорт":
                     return "Транспорт";
@@ -486,9 +430,9 @@ namespace Course_project_HOME_ACCOUNTANCE
                 case "Развлечения":
                 case "Отдых":
                     return "Досуг и учеба";
-                case "Одежда":
+                case "Прочие":
                 case "Подарки":
-                    return "Одежда и подарки";
+                    return "Прочие";
                 default:
                     return "Неизвестная категория";
             }
@@ -509,16 +453,17 @@ namespace Course_project_HOME_ACCOUNTANCE
             ProgressBar progressBar = new ProgressBar();
             Label goalLabel = new Label();
 
-            progressBar.Width = 75;
+            progressBar.Width = 150;
             progressBar.Minimum = 0;
             progressBar.Maximum = 100;
             progressBar.Step = 1;
             goalLabel.Text = goalName;
             goalLabel.Height = 13;
+            goalLabel.Size = new Size(150, 13); 
             goalLabel.Text = ShortenGoalName(goalName);
             int labelWidth = goalLabel.Width;
             goalLabel.Location = new Point(100, yOffset);
-            progressBar.Location = new Point(labelWidth, yOffset);
+            progressBar.Location = new Point(100, yOffset);
 
             this.Controls.Add(goalLabel);
             this.Controls.Add(progressBar);
@@ -526,13 +471,13 @@ namespace Course_project_HOME_ACCOUNTANCE
 
             // Прогресс-бар для времени
             ColorProgressBar dateBar = new ColorProgressBar();
-            dateBar.Width = 75;
+            dateBar.Width = 150;
             dateBar.Location = new Point(100, yOffset+10);
             DateTime currentDate = DateTime.Now;
             DateTime startDate = period[0];
             DateTime endDate = period[1];
 
-            double progressValue = ((currentDate - startDate).TotalDays / (endDate - startDate).TotalDays) * 100;
+            double progressValue = ((currentDate.Date - startDate.Date).TotalDays / (endDate.Date - startDate.Date).TotalDays) * 100;
             dateBar.Value = (int)Math.Min(Math.Max(progressValue, 0), 100); // Ограничиваем значение от 0 до 100
             this.Controls.Add(dateBar);
         }
@@ -786,7 +731,6 @@ namespace Course_project_HOME_ACCOUNTANCE
                 return false;
             }
         }
-
         private void CheckGoalStatus()
         {
             if (!Session.isGoalStatusChecked)
@@ -806,8 +750,11 @@ namespace Course_project_HOME_ACCOUNTANCE
                             else if (goal.period[1] < DateTime.Now)
                             {
                                 int daysOverdue = (DateTime.Now - goal.period[1]).Days;
-                                string daysText = GetDaysText(daysOverdue);
-                                MessageBox.Show($"Цель '{goal.definition}' просрочена на {daysOverdue} {daysText}!");
+                                if (daysOverdue > 0)
+                                {
+                                    string daysText = GetDaysText(daysOverdue);
+                                    MessageBox.Show($"Цель '{goal.definition}' просрочена на {daysOverdue} {daysText}!");
+                                }
                             }
                         }
                     }

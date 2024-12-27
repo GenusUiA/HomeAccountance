@@ -59,7 +59,7 @@
             this.CreateTransaction.Name = "CreateTransaction";
             this.CreateTransaction.Size = new System.Drawing.Size(223, 33);
             this.CreateTransaction.TabIndex = 2;
-            this.CreateTransaction.Text = "Создать транзакцию";
+            this.CreateTransaction.Text = "Создать расход";
             this.CreateTransaction.UseVisualStyleBackColor = false;
             this.CreateTransaction.Click += new System.EventHandler(this.CreateTransaction_Click);
             // 

@@ -16,7 +16,8 @@ namespace Course_project_HOME_ACCOUNTANCE
         {
             InitializeComponent();
             LoadCategories();
-            dateform.MaxDate = DateTime.Now;    
+            dateform.MaxDate = DateTime.Now;
+            dateform.Value = DateTime.Now.AddDays(-1);
         }
 
         private void LoadCategories()
@@ -104,6 +105,10 @@ namespace Course_project_HOME_ACCOUNTANCE
             else if (decimal.TryParse(sumform.Text, out decimal sum))
             {
                 SaveToDatabase(date, sum, category, place, Session.Id);
+                dateform.Value = DateTime.Now.AddDays(-1);
+                categoryform.Text = string.Empty;
+                placeform.Text = string.Empty;
+                sumform.Text = string.Empty;
             }
             else
             {

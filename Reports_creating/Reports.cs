@@ -20,9 +20,6 @@ namespace Course_project_HOME_ACCOUNTANCE.Reports_creating
 
             From.MaxDate = DateTime.Now;
             dateform.MaxDate = DateTime.Now;
-            From.Value = DateTime.Now;
-            dateform.Value = DateTime.Now;
-
             // Привязка обработчиков событий
             From.ValueChanged += From_ValueChanged;
             dateform.ValueChanged += For_ValueChanged;
